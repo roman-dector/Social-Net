@@ -1,0 +1,7 @@
+.preloader {
+  display: grid;
+}
+
+.preloader img{
+  justify-self: center;
+}

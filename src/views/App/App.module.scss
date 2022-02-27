@@ -1,0 +1,17 @@
+.app {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 50px auto;
+  gap: 15px;
+
+  grid-template-areas:
+    'h h'
+    's c';
+}
+
+.contentWrapper {
+  grid-area: c;
+  width: 80%;
+  border-radius: 10px;
+  background-color: #111828;
+}
