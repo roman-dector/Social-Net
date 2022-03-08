@@ -1,0 +1,109 @@
+@mixin inputStyle($width) {
+  width: $width;
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.loginFormContainer {
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & * {
+    margin: 20px;
+  }
+
+  input,
+  label {
+    margin: 10px;
+    display: block;
+  }
+
+  input {
+    background-color: #ebedff;
+    font-size: 16px;
+  }
+
+  .email,
+  .password {
+    label {
+      font-size: 18px;
+    }
+    input {
+      @include inputStyle(300px);
+      color: black;
+    }
+  }
+
+  .rememberMe {
+    display: flex;
+    align-items: center;
+    input, label {
+      display: inline-block;
+    }
+  }
+
+  .submit {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      @include inputStyle(150px);
+      background-color: #a7154a;
+
+      &:hover {
+        width: 150px;
+        background-color: #771036;
+      }
+      &:disabled {
+        width: 150px;
+        background-color: #50494c;
+      }
+    }
+  }
+
+  .fieldError {
+    color: red;
+    margin-left: 20px;
+  }
+
+  .formErrorContainer {
+    display: flex;
+    justify-content: center;
+
+    .formError {
+      color: red;
+      border: 2px red solid;
+      padding: 10px;
+      width: 280px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  }
+
+  .captcha {
+    display: grid;
+    justify-content: center;
+
+    .captchaImgContainer {
+      display: grid;
+      border-radius: 5px;
+      background-color: white;
+      width: 300px;
+      justify-self: center;
+      padding: 5px;
+      margin: 0;
+    }
+
+    img {
+      justify-self: center;
+    }
+    input {
+      @include inputStyle(300px);
+      color: black;
+    }
+  }
+}

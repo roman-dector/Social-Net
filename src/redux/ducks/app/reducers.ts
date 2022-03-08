@@ -1,23 +1,26 @@
-import * as types from './types';
+import * as types from './types'
 
 const initialState = {
   isAppInitialized: false,
-};
+}
 
-type InitialStateType = typeof initialState;
+type InitialStateType = typeof initialState
 
-const appReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+const appReducer = (
+  state: InitialStateType = initialState,
+  action: types.AppReducerActionsType
+): InitialStateType => {
   switch (action.type) {
     case types.SET_IS_APP_INITIALIZED:
       return {
         ...state,
         isAppInitialized: action.isAppInitialized,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export type { InitialStateType };
+export type { InitialStateType }
 
-export default appReducer;
+export default appReducer

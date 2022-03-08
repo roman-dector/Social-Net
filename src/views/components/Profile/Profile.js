@@ -1,6 +1,6 @@
 import styles from './Profile.module.css';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';

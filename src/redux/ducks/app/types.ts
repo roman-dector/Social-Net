@@ -4,3 +4,5 @@ export type setIsAppInitializedActionType = {
   type: typeof SET_IS_APP_INITIALIZED;
   isAppInitialized: boolean;
 };
+
+export type AppReducerActionsType = setIsAppInitializedActionType

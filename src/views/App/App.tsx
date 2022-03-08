@@ -1,6 +1,6 @@
 import styles from './App.module.scss'
 
-import React, { useEffect, FC } from 'react'
+import { useEffect, FC } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { compose } from '@reduxjs/toolkit'
 import { connect } from 'react-redux'
@@ -19,7 +19,7 @@ import {
   Settings,
   NotFound,
   Preloader,
-} from '../components/index.js'
+} from '../components/index'
 import { RootState } from '../../redux/store'
 
 type MapStateToPropsType = {
