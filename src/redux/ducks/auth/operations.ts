@@ -25,7 +25,9 @@ export const login =
     password,
     rememberMe = false,
     captcha = null,
-  }: types.LoginData): AppThunk =>
+  }: types.LoginDataType): AppThunk<
+    Promise<void | WrongCaptchaError | WrongCredentialsError>
+  > =>
   async dispatch => {
     let response = await authAPI.login({
       email,

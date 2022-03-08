@@ -21,7 +21,7 @@ export const authAPI = {
     password,
     rememberMe,
     captcha,
-  }: authTypes.LoginData): Promise<
+  }: authTypes.LoginDataType): Promise<
     respTypes.ApiResponseType<respTypes.LoginResponseDataType>
   > {
     return await instance.post('/auth/login', {

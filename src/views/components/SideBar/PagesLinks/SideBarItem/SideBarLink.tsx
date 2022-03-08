@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './SideBarLink.module.css';
 
-const SideBarLink = ({ to, name }) => {
+const SideBarLink = ({ to, name }: {to: string, name: string}) => {
   return (
     <li className={styles.sideBarLink}>
       <NavLink
