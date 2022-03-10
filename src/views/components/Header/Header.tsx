@@ -22,19 +22,22 @@ type HeaderPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const Header: FC<HeaderPropsType> = props => {
   return (
-    <div className={styles.header}>
-      <div className={styles.headerContent}>
-        <img className={styles.logo} src={logo} alt={'logo'} />
+    <>
+      <div className={styles.header__bg}>1</div>
+      <div className={styles.header}>
+        <div className={styles.header__content}>
+          <img className={styles.header__logo} src={logo} alt={'logo'} />
 
-        <div className={styles.log}>
-          {props.isUserAuthed ? (
-            <a onClick={props.logout}>Log Out</a>
-          ) : (
-            <Link to='/login'>Log In</Link>
-          )}
+          <div className={styles.header__log}>
+            {props.isUserAuthed ? (
+              <a onClick={props.logout}>Log Out</a>
+            ) : (
+              <Link to='/login'>Log In</Link>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -1,30 +1,35 @@
 .header {
   grid-area: h;
   background-color: #111828;
-  display: flex;
-  justify-content: center;
 
-  .headerContent {
+  .header__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
 
-    .logo {
-      height: 80%;
+    max-width: 1200px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    .header__logo {
+      height: 40px;
     }
 
-    .log {
-      display: grid;
+    .header__log {
+      display: inline-grid;
+      justify-content: center;
+      align-content: center;
+
       width: 80px;
       height: 32px;
+
       background-color: #2898b1;
+
       padding: 5px;
       border-radius: 5px;
 
       a {
-        justify-self: center;
-        align-self: center;
         text-decoration: none;
         font-weight: bold;
       }
