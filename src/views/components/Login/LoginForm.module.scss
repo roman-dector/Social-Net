@@ -55,12 +55,13 @@
       background-color: #a7154a;
 
       &:hover {
-        width: 150px;
         background-color: #771036;
       }
       &:disabled {
-        width: 150px;
         background-color: #50494c;
+      }
+      &:active {
+        background-color: invert($color: #a7154a);
       }
     }
   }

@@ -1,3 +1,5 @@
+$log_button_color: #2898b1;
+
 .header {
   grid-area: h;
   background-color: #111828;
@@ -24,10 +26,19 @@
       width: 80px;
       height: 32px;
 
-      background-color: #2898b1;
+      // background-color: #2898b1;
+      background-color: $log_button_color;
 
       padding: 5px;
       border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #297688;
+      }
+      &:active {
+        background-color: invert($color: $log_button_color);
+      }
 
       a {
         text-decoration: none;
