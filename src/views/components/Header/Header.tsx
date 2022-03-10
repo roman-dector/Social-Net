@@ -23,7 +23,6 @@ type HeaderPropsType = MapStateToPropsType & MapDispatchToPropsType
 const Header: FC<HeaderPropsType> = props => {
   return (
     <>
-      <div className={styles.header__bg}>1</div>
       <div className={styles.header}>
         <div className={styles.header__content}>
           <img className={styles.header__logo} src={logo} alt={'logo'} />

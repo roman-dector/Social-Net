@@ -1,0 +1,11 @@
+.sidebar {
+  grid-area: s;
+  width: 100%;
+
+  background-color: #111828;
+  border-radius: 10px;
+}
+
+.sidebar__content {
+  padding: 20px;
+}

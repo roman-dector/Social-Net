@@ -1,11 +1,11 @@
-import styles from './SideBar.module.css';
+import styles from './SideBar.module.scss';
 
 import PagesLinks from './PagesLinks/PagesLinks';
 
 const SideBar = () => {
   return (
-    <div className={styles.sideBar}>
-      <div className={styles.sideBarContent}>
+    <div className={styles.sidebar}>
+      <div className={styles.sidebar__content}>
         <PagesLinks />
       </div>
     </div>
