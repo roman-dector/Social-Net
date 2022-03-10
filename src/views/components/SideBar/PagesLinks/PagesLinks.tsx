@@ -1,10 +1,8 @@
-import styles from './PagesLinks.module.css';
-
 import SideBarLink from './SideBarItem/SideBarLink';
 
 const PagesLinks = () => {
   return (
-    <ul className={styles.pagesLinks}>
+    <ul>
       <SideBarLink to='/profile' name='Profile' />
       <SideBarLink to='/dialogs' name='Dialogs' />
       <SideBarLink to='/users' name='Users' />

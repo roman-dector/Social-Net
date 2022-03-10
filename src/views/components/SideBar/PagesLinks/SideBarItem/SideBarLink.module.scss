@@ -1,0 +1,17 @@
+.sideBarLink {
+  padding: 5px;
+
+  .sideBarLink_link {
+    text-decoration: none;
+    padding-left: 20px;
+  }
+  .sideBarLink_active {
+    text-decoration: none;
+    color: #32c0e1;
+
+    &::before {
+      content: '►';
+      padding-right: 4px;
+    }
+  }
+}
