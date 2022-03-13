@@ -3,11 +3,10 @@ import * as actions from './actions'
 import { profileAPI } from '../../../dataAccess/api'
 
 export const getUserProfileInfo =
-  (userId: number): AppThunk =>
+  (userId: number): AppThunk<Promise<void>> =>
   async dispatch => {
     let response = await profileAPI.getUserProfileInfo(userId)
-
-    return dispatch(actions.setUserProfileInfo(response.data))
+    dispatch(actions.setUserProfileInfo(response.data))
   }
 
 export const getUserStatus =

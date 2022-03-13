@@ -3,6 +3,8 @@ $log_button_color: #2898b1;
 .header {
   grid-area: h;
   background-color: #111828;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
 
   .header__content {
     display: flex;
@@ -26,7 +28,6 @@ $log_button_color: #2898b1;
       width: 80px;
       height: 32px;
 
-      // background-color: #2898b1;
       background-color: $log_button_color;
 
       padding: 5px;
