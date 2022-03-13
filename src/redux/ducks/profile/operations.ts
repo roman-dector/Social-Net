@@ -10,15 +10,14 @@ export const getUserProfileInfo =
   }
 
 export const getUserStatus =
-  (userId: number): AppThunk =>
+  (userId: number): AppThunk<Promise<void>> =>
   async dispatch => {
     let response = await profileAPI.getUserStatus(userId)
-
-    return dispatch(actions.setUserStatus(response.data))
+    dispatch(actions.setUserStatus(response.data))
   }
 
 export const updateLoggedUserPhoto =
-  (image: File): AppThunk =>
+  (image: File): AppThunk<Promise<void>> =>
   async dispatch => {
     let response = await profileAPI.updateLoggedUserPhoto(image)
     if (!response.data.resultCode)

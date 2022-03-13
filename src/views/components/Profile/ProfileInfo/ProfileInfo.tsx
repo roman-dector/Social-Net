@@ -1,10 +1,23 @@
-import styles from './ProfileInfo.module.css';
+import styles from './ProfileInfo.module.css'
 
-import default_avatar from '../../../assets/default_avatar.jpg';
-import Preloader from '../../common/Preloader';
-import { useForm } from 'react-hook-form';
+import default_avatar from '../../../assets/default_avatar.jpg'
+import Preloader from '../../common/Preloader'
+import { useForm } from 'react-hook-form'
+import {
+  ContactsType,
+  UserProfileInfoType,
+} from '../../../../redux/ducks/profile/types'
+import { ChangeEvent, FC } from 'react'
 
-const ProfileInfo = props => {
+type OnChangePhotoType = (e: ChangeEvent<HTMLInputElement>) => void
+type ProfileInfoPropsType = {
+  userProfileInfo: UserProfileInfoType
+  userProfileStatus: string | null
+  isFetchingProfileStatus: boolean
+  onChangePhoto: OnChangePhotoType
+}
+
+const ProfileInfo: FC<ProfileInfoPropsType> = props => {
   let {
     photos,
     fullName,
@@ -12,7 +25,7 @@ const ProfileInfo = props => {
     lookingForAJobDescription,
     aboutMe,
     contacts,
-  } = props.userProfileInfo;
+  } = props.userProfileInfo
   return (
     <div className={styles.profileInfo}>
       <div className={styles.profilePhotoContainer}>
@@ -20,14 +33,10 @@ const ProfileInfo = props => {
           photo={photos?.large ? photos?.large : default_avatar}
           onChangePhoto={props.onChangePhoto}
         />
-
-        {props.isFetchingProfileStatus ? (
-          <Preloader />
-        ) : (
-          <span className={styles.userProfileStatus}>
-            {props.userProfileStatus}
-          </span>
-        )}
+        <ProfileStatus
+          isFetchingProfileStatus={props.isFetchingProfileStatus}
+          userProfileStatus={props.userProfileStatus}
+        />
       </div>
       <div className={styles.personalInfo}>
         <h3>Personal info</h3>
@@ -53,47 +62,58 @@ const ProfileInfo = props => {
 
       <MyContacts contacts={contacts} />
     </div>
-  );
-};
+  )
+}
 
-const Contact = ({ title, value }) => {
+const Contact = ({ title, value }: { title: string; value: string }) => {
   return (
     <p>
       <b>{title}: </b>
       {value}
     </p>
-  );
-};
+  )
+}
 
-const MyContacts = ({ contacts }) => (
+const MyContacts = ({ contacts }: { contacts: ContactsType }) => (
   <div className={styles.contacts}>
     <h3>My contacts: </h3>
     {contacts
       ? Object.entries(contacts).map((e, i) => {
-          return !e[1] ? null : <Contact key={i} title={e[0]} value={e[1]} />;
+          return !e[1] ? null : <Contact key={i} title={e[0]} value={e[1]} />
         })
       : null}
   </div>
-);
+)
 
-const ChangePhoto = props => (
+const ChangePhoto = (props: { onChangePhoto: OnChangePhotoType }) => (
   <div className={styles.changePhotoContainer}>
     <label>
       <input type={'file'} onChange={props.onChangePhoto} />
       <span>Choose file</span>
     </label>
   </div>
-);
+)
 
-const ProfilePhoto = props => {
+const ProfilePhoto = (props: {
+  photo: string
+  onChangePhoto: OnChangePhotoType
+}) => {
   return (
     <div className={styles.profilePhoto}>
       <img src={props.photo} alt='user avatar' />
       <ChangePhoto onChangePhoto={props.onChangePhoto} />
     </div>
-  );
-};
+  )
+}
 
-const ProfileStatus = () => {};
+const ProfileStatus = (props: {
+  isFetchingProfileStatus: boolean
+  userProfileStatus: string | null
+}) =>
+  props.isFetchingProfileStatus ? (
+    <Preloader />
+  ) : (
+    <span className={styles.userProfileStatus}>{props.userProfileStatus}</span>
+  )
 
-export default ProfileInfo;
+export default ProfileInfo

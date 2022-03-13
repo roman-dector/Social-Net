@@ -45,7 +45,7 @@ export const login =
     } else throw new WrongCredentialsError(response.data.messages[0])
   }
 
-export const logout = (): AppThunk => async dispatch => {
+export const logout = (): AppThunk<Promise<void>> => async dispatch => {
   let response = await authAPI.logout()
   if (!response.data.resultCode) return dispatch(authMe())
 }
