@@ -5,37 +5,48 @@ import Preloader from '../../common/Preloader'
 import { useForm } from 'react-hook-form'
 import {
   ContactsType,
-  UserProfileInfoType,
 } from '../../../../redux/ducks/profile/types'
-import { ChangeEvent, FC } from 'react'
+import { ChangeEvent, ChangeEventHandler, FC } from 'react'
+import { useSelector } from 'react-redux'
+
+import {
+  updateLoggedUserPhoto,
+} from '../../../../redux/ducks/profile/operations'
+import {
+  selectUserProfileInfo,
+  selectUserProfileStatus,
+  selectIsFetchingProfileStatus,
+} from '../../../../redux/ducks/profile/selectors'
 
 type OnChangePhotoType = (e: ChangeEvent<HTMLInputElement>) => void
-type ProfileInfoPropsType = {
-  userProfileInfo: UserProfileInfoType
-  userProfileStatus: string | null
-  isFetchingProfileStatus: boolean
-  onChangePhoto: OnChangePhotoType
-}
 
-const ProfileInfo: FC<ProfileInfoPropsType> = props => {
-  let {
+const ProfileInfo: FC<{}> = () => {
+  const {
     photos,
     fullName,
     lookingForAJob,
     lookingForAJobDescription,
     aboutMe,
     contacts,
-  } = props.userProfileInfo
+  } = useSelector(selectUserProfileInfo)
+
+  const userProfileStatus: string | null = useSelector(selectUserProfileStatus)
+  const isFetchingProfileStatus: boolean = useSelector(selectIsFetchingProfileStatus)
+
+  const onChangePhoto: ChangeEventHandler<HTMLInputElement> = e => {
+    if (e?.target?.files?.length) updateLoggedUserPhoto(e.target.files[0])
+  }
+
   return (
     <div className={styles.profileInfo}>
       <div className={styles.profilePhotoContainer}>
         <ProfilePhoto
           photo={photos?.large ? photos?.large : default_avatar}
-          onChangePhoto={props.onChangePhoto}
+          onChangePhoto={onChangePhoto}
         />
         <ProfileStatus
-          isFetchingProfileStatus={props.isFetchingProfileStatus}
-          userProfileStatus={props.userProfileStatus}
+          isFetchingProfileStatus={isFetchingProfileStatus}
+          userProfileStatus={userProfileStatus}
         />
       </div>
       <div className={styles.personalInfo}>
