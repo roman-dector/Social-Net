@@ -3,7 +3,7 @@ import styles from './App.module.scss'
 import { useEffect, FC } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { compose } from '@reduxjs/toolkit'
-import { connect } from 'react-redux'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
 import { initializeApp } from '../../redux/ducks/app/operations'
 import { appSelectors } from '../../redux/ducks/app'
@@ -22,20 +22,19 @@ import {
 } from '../components/index'
 import { RootState } from '../../redux/store'
 
-type MapStateToPropsType = {
-  isAppInitialized: boolean
-}
 
-type MapDispatchToPropsType = {
-  initializeApp: () => void
-}
+const App: FC = () => {
+  const dispatch = useDispatch()
 
-type AppPropsType = MapStateToPropsType & MapDispatchToPropsType
+  useEffect(() => {
+    dispatch(initializeApp())
+  })
 
-const App: FC<AppPropsType> = props => {
-  useEffect(() => props.initializeApp())
+  const isAppInitialized: boolean = useSelector(
+    appSelectors.getIsAppInitialized
+  )
 
-  if (!props.isAppInitialized) return <Preloader />
+  if (!isAppInitialized) return <Preloader />
 
   return (
     <HashRouter>
@@ -69,14 +68,5 @@ const App: FC<AppPropsType> = props => {
   )
 }
 
-const mapStateToProps = (state: RootState): MapStateToPropsType => ({
-  isAppInitialized: appSelectors.getIsAppInitialized(state),
-})
 
-export default compose(
-  withStore,
-  connect<MapStateToPropsType, MapDispatchToPropsType, {}, RootState>(
-    mapStateToProps,
-    { initializeApp }
-  )
-)(App)
+export default withStore(App)

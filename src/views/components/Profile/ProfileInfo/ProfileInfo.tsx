@@ -124,7 +124,12 @@ const ProfileStatus = (props: {
   props.isFetchingProfileStatus ? (
     <Preloader />
   ) : (
-    <span className={styles.userProfileStatus}>{props.userProfileStatus}</span>
+    <span
+      className={styles.userProfileStatus}
+      onDoubleClick={()=>{alert('Hey')}}
+    >
+      {props.userProfileStatus}
+    </span>
   )
 
 export default ProfileInfo
