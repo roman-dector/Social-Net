@@ -1,0 +1,6 @@
+.user{
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
