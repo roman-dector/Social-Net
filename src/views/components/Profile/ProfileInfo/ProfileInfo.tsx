@@ -1,4 +1,4 @@
-import styles from './ProfileInfo.module.css'
+import styles from './ProfileInfo.module.scss'
 
 import default_avatar from '../../../assets/default_avatar.jpg'
 import Preloader from '../../common/Preloader'
@@ -7,7 +7,7 @@ import {
   ContactsType,
 } from '../../../../redux/ducks/profile/types'
 import { ChangeEvent, ChangeEventHandler, FC } from 'react'
-import { useSelector } from 'react-redux'
+import {shallowEqual, useSelector, useDispatch } from 'react-redux'
 
 import {
   updateLoggedUserPhoto,
@@ -21,6 +21,7 @@ import {
 type OnChangePhotoType = (e: ChangeEvent<HTMLInputElement>) => void
 
 const ProfileInfo: FC<{}> = () => {
+  const dispatch = useDispatch()
   const {
     photos,
     fullName,
@@ -33,10 +34,11 @@ const ProfileInfo: FC<{}> = () => {
   const userProfileStatus: string | null = useSelector(selectUserProfileStatus)
   const isFetchingProfileStatus: boolean = useSelector(selectIsFetchingProfileStatus)
 
-  const onChangePhoto: ChangeEventHandler<HTMLInputElement> = e => {
-    if (e?.target?.files?.length) updateLoggedUserPhoto(e.target.files[0])
-  }
 
+  const onChangePhoto: ChangeEventHandler<HTMLInputElement> = e => {
+    if (e?.target?.files?.length)
+      dispatch(updateLoggedUserPhoto(e.target.files[0]))
+  }
   return (
     <div className={styles.profileInfo}>
       <div className={styles.profilePhotoContainer}>
@@ -127,6 +129,7 @@ const ProfileStatus = (props: {
     <span
       className={styles.userProfileStatus}
       onDoubleClick={()=>{alert('Hey')}}
+      onMouseEnter={()=>{}}
     >
       {props.userProfileStatus}
     </span>

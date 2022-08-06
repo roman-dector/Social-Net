@@ -7,6 +7,7 @@ export const getUserProfileInfo =
   async dispatch => {
     let response = await profileAPI.getUserProfileInfo(userId)
     dispatch(actions.setUserProfileInfo(response.data))
+    dispatch(actions.toggleIsFetchingProfileInfo(false))
   }
 
 export const getUserStatus =
@@ -14,6 +15,7 @@ export const getUserStatus =
   async dispatch => {
     let response = await profileAPI.getUserStatus(userId)
     dispatch(actions.setUserStatus(response.data))
+    dispatch(actions.toggleIsFetchingProfileStatus(false))
   }
 
 export const updateLoggedUserPhoto =
@@ -21,5 +23,13 @@ export const updateLoggedUserPhoto =
   async dispatch => {
     let response = await profileAPI.updateLoggedUserPhoto(image)
     if (!response.data.resultCode)
-      dispatch(actions.setUserPhotos(response.data.data))
+      dispatch(actions.setUserPhotos(response.data.data.photos))
+  }
+
+export const updateLoggedUserStatus =
+  (newStatus: string): AppThunk<Promise<void>> =>
+  async dispatch => {
+    let response = await profileAPI.updateLoggedUserStatus(newStatus)
+    if (!response.data.resultCode)
+      dispatch(actions.setUserStatus(newStatus))
   }

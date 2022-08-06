@@ -1,5 +1,3 @@
-import styles from './Profile.module.css'
-
 import { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -37,15 +35,13 @@ const Profile: FC<{}> = () => {
 
     dispatch(toggleIsFetchingProfileInfo(true))
     dispatch(getUserProfileInfo(userId as number))
-    dispatch(toggleIsFetchingProfileInfo(false))
 
     dispatch(toggleIsFetchingProfileStatus(true))
     dispatch(getUserStatus(userId as number))
-    dispatch(toggleIsFetchingProfileStatus(false))
   }, [urlParams])
 
   return (
-    <div className={styles.profile}>
+    <div>
       {isFetchingProfileInfo ? <Preloader /> : <ProfileInfo />}
     </div>
   )

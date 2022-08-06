@@ -2,8 +2,7 @@ import styles from './App.module.scss'
 
 import { useEffect, FC } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { compose } from '@reduxjs/toolkit'
-import { connect, useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { initializeApp } from '../../redux/ducks/app/operations'
 import { appSelectors } from '../../redux/ducks/app'
@@ -20,7 +19,6 @@ import {
   NotFound,
   Preloader,
 } from '../components/index'
-import { RootState } from '../../redux/store'
 
 
 const App: FC = () => {

@@ -15,9 +15,9 @@ export const setUserStatus = (userStatus: string): types.SetUserStatusActionType
 export const setUserPhotos = (
   photos: types.PhotosType
 ): types.SetUserPhotosActionType => ({
-  type: types.SET_USER_PHOTOS,
-  photos,
-})
+    type: types.SET_USER_PHOTOS,
+    photos,
+  })
 
 export const toggleIsFetchingProfileInfo = (
   isFetchingProfileInfo: boolean

@@ -24,7 +24,9 @@ export type LoginResponseDataType = {
 export type UpdataLoggedUserPhotoDataType = {
   resultCode: number
   messages: Array<string>
-  data: profileTypes.PhotosType
+  data: {
+    photos: profileTypes.PhotosType
+  }
 }
 
 export type CommonResponseDataType = {

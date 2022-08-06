@@ -1,0 +1,54 @@
+.profileInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .profilePhotoContainer {
+    margin: 15px;
+    width: 80%;
+
+    .profilePhoto {
+      position: relative;
+      
+      img {
+        border-radius: 10px;
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: 0.3s ease;
+        backface-visibility: hidden;
+      }
+      
+      .changePhotoContainer {
+        transition: 0.3s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+
+        input {
+          display: none;
+        }
+        span {
+            background-color: #2898B1;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+        }
+      }
+
+      &:hover {
+
+        img {
+          opacity: 0.3;
+        }
+
+        .changePhotoContainer {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
