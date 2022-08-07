@@ -1,9 +1,44 @@
+$blue-accent-color: #2898b1;
+
 .profileInfo {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 0.25fr;
+  padding: 15px;
+
+  .editInfoIcon {
+    width: 30px;
+    fill: #37455C;
+
+    &:hover {
+      fill: white;
+    }
+  }
+
+  .personalInfo {
+    margin-left: 20px;
+    display: flex;
+    gap: 100px;
+
+    .aboutMe,
+    .contacts {
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      b {
+        margin-right: 6px;
+      }
+
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+
+      line-height: 20px;
+    }
+  }
 
   .profilePhotoContainer {
-    margin: 15px;
     width: 80%;
 
     .userProfileStatusContainer {
@@ -18,18 +53,11 @@
         background-color: #1a212d;
         padding: 5px;
       }
-
-
     }
-    // .userProfileStatus {
-    //   font-size: 13px;
-    //   margin: 15px 0 0 12px;
-    //   height: 30px;
-    // }
 
     .profilePhoto {
       position: relative;
-      
+
       img {
         border-radius: 10px;
         opacity: 1;
@@ -39,7 +67,7 @@
         transition: 0.3s ease;
         backface-visibility: hidden;
       }
-      
+
       .changePhotoContainer {
         transition: 0.3s ease;
         opacity: 0;
@@ -53,15 +81,14 @@
           display: none;
         }
         span {
-            background-color: #2898B1;
-            font-weight: bold;
-            padding: 5px;
-            border-radius: 5px;
+          background-color: $blue-accent-color;
+          font-weight: bold;
+          padding: 5px;
+          border-radius: 5px;
         }
       }
 
       &:hover {
-
         img {
           opacity: 0.3;
         }
@@ -72,5 +99,4 @@
       }
     }
   }
-
 }
