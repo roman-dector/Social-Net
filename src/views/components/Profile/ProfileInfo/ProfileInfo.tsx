@@ -2,7 +2,6 @@ import styles from './ProfileInfo.module.scss'
 
 import default_avatar from '../../../assets/default_avatar.jpg'
 import Preloader from '../../common/Preloader'
-import { useForm } from 'react-hook-form'
 import { ContactsType } from '../../../../redux/ducks/profile/types'
 import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -13,13 +12,18 @@ import {
   updateLoggedUserStatus,
 } from '../../../../redux/ducks/profile/operations'
 import {
+  toggleIsFetchingProfileStatus
+} from '../../../../redux/ducks/profile/actions'
+
+import {
   selectUserProfileInfo,
   selectUserProfileStatus,
   selectIsFetchingProfileStatus,
 } from '../../../../redux/ducks/profile/selectors'
 
+import { ProfileStatusContainer } from './ProfileStatus'
+
 type OnChangePhotoType = (e: ChangeEvent<HTMLInputElement>) => void
-type OnChangeStatusType = (e: ChangeEvent<HTMLInputElement>) => void
 
 const ProfileInfo: FC<{}> = () => {
   const dispatch = useDispatch()
@@ -44,9 +48,9 @@ const ProfileInfo: FC<{}> = () => {
       dispatch(updateLoggedUserPhoto(e.target.files[0]))
   }
 
-  const onChangeStatus: ChangeEventHandler<HTMLInputElement> = e => {
-    // dispatch(updateLoggedUserStatus(e.target.textContent))
-    alert(e.target.textContent)
+  const onChangeStatus = (newStatus: string) => {
+    dispatch(toggleIsFetchingProfileStatus(true))
+    dispatch(updateLoggedUserStatus(newStatus))
   }
 
   return (
@@ -61,9 +65,9 @@ const ProfileInfo: FC<{}> = () => {
           isEditStatus={isEditStatus}
           isFetchingProfileStatus={isFetchingProfileStatus}
           userProfileStatus={userProfileStatus}
-          onChangeStatus={setIsEditStatus}
+          setIsEditStatus={setIsEditStatus}
+          onChangeStatus={onChangeStatus}
         />
-
       </div>
       <div className={styles.personalInfo}>
         <h3>Personal info</h3>
@@ -133,70 +137,5 @@ const ProfilePhoto = (props: {
   )
 }
 
-type ProfileStatusContainerType = {
-  isEditStatus: boolean
-  isFetchingProfileStatus: boolean
-  userProfileStatus: string | null
-  onChangeStatus: (x: boolean) => void
-}
-
-const ProfileStatusContainer: FC<ProfileStatusContainerType> = props => {
-  const userStatus = props.userProfileStatus ? props.userProfileStatus : ''
-
-  return props.isEditStatus ? (
-    <ProfileStatusForm oldStatus={userStatus} />
-  ) : (
-    <ProfileStatus
-      isFetchingProfileStatus={props.isFetchingProfileStatus}
-      userProfileStatus={props.userProfileStatus}
-      onChangeStatus={props.onChangeStatus}
-    />
-  )
-}
-
-const ProfileStatus = (props: {
-  isFetchingProfileStatus: boolean
-  userProfileStatus: string | null
-  onChangeStatus: (x: boolean) => void
-}) =>
-  props.isFetchingProfileStatus ? (
-    <Preloader />
-  ) : (
-    <>
-      <div
-        className={styles.userProfileStatus}
-        onDoubleClick={() => {
-          props.onChangeStatus(true)
-        }}
-        data-tip
-        data-for='changeProfileStatusHint'
-      >
-        {props.userProfileStatus}
-      </div>
-      <ReactTooltip
-        id='changeProfileStatusHint'
-        type='info'
-        delayShow={50}
-        backgroundColor='#41c3e0a7'
-        arrowColor='#41c3e0a7'
-      >
-        <span>Double click to edit</span>
-      </ReactTooltip>
-    </>
-  )
-
-const ProfileStatusForm = (props: { oldStatus: string }) => {
-  const { register, handleSubmit } = useForm<{ status: string }>({
-    defaultValues: {
-      status: props.oldStatus,
-    },
-  })
-
-  return (
-    <form>
-      <input {...register('status')} />
-    </form>
-  )
-}
 
 export default ProfileInfo

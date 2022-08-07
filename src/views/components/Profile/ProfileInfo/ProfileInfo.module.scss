@@ -6,11 +6,26 @@
     margin: 15px;
     width: 80%;
 
-    .userProfileStatus {
+    .userProfileStatusContainer {
       font-size: 13px;
-      margin: 15px 0 0 12px;
+      margin: 15px 0 0 0;
       height: 30px;
+
+      input {
+        border-radius: 3px;
+        border: solid #202938;
+        width: 100%;
+        background-color: #1a212d;
+        padding: 5px;
+      }
+
+
     }
+    // .userProfileStatus {
+    //   font-size: 13px;
+    //   margin: 15px 0 0 12px;
+    //   height: 30px;
+    // }
 
     .profilePhoto {
       position: relative;

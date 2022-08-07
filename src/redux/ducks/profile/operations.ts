@@ -32,4 +32,5 @@ export const updateLoggedUserStatus =
     let response = await profileAPI.updateLoggedUserStatus(newStatus)
     if (!response.data.resultCode)
       dispatch(actions.setUserStatus(newStatus))
+      dispatch(actions.toggleIsFetchingProfileStatus(false))
   }
