@@ -8,5 +8,5 @@ export const selectIsAuthenticating = (state: RootState): boolean =>
 export const selectCaptchaUrl = (state: RootState): string | null =>
   state.authState.captcha.captchaUrl
 
-export const selectLoggedUserId = (state: RootState): number | null =>
+export const selectLoggedUserId = (state: RootState): number =>
   state.authState.loggedUser.id

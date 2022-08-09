@@ -61,7 +61,7 @@ export const profileAPI = {
   },
 
   async updateLoggedUserInfo(
-    userInfo: profileTypes.UserProfileInfoType
+    userInfo: profileTypes.UserPersonalInfoType
   ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
     return await instance.put('/profile', userInfo)
   },

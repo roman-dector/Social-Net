@@ -13,6 +13,16 @@ export type PhotosType = {
   large: string
 }
 
+export type ContactTitleType =
+  | 'vk'
+  | 'github'
+  | 'twitter'
+  | 'website'
+  | 'youtube'
+  | 'mainLink'
+  | 'facebook'
+  | 'instagram'
+
 export type ContactsType = {
   github: string
   vk: string
@@ -24,15 +34,25 @@ export type ContactsType = {
   mainLink: string
 }
 
-export type UserProfileInfoType = {
-  userId: number
+// export type ContactsType = {ContactTitleType: string}
+
+export type AboutMeType = {
+  fullName: string
   lookingForAJob: boolean
   lookingForAJobDescription: string
-  fullName: string
-  contacts: ContactsType
-  photos: PhotosType
   aboutMe: string
 }
+
+export type MyContactsType = {
+  contacts: ContactsType
+}
+
+export type PersonalInfoType = AboutMeType & MyContactsType
+export type PersonalInfoFormType = AboutMeType & ContactsType
+
+export type UserPersonalInfoType = PersonalInfoType & { userId: number }
+
+export type UserProfileInfoType = UserPersonalInfoType & { photos: PhotosType }
 
 export type SetUserProfileInfoActionType = {
   type: typeof SET_USER_PROFILE_INFO

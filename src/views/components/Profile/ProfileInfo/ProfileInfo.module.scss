@@ -2,39 +2,97 @@ $blue-accent-color: #2898b1;
 
 .profileInfo {
   display: grid;
-  grid-template-columns: 1fr 2fr 0.25fr;
-  padding: 15px;
+  grid-template-columns: 1fr 2fr;
+  padding: 25px;
 
   .editInfoIcon {
-    width: 30px;
-    fill: #37455C;
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: flex-start;
 
-    &:hover {
+    svg {
+      width: 30px;
+      fill: #37455C;
+    }
+    svg:hover {
       fill: white;
     }
+
   }
 
   .personalInfo {
     margin-left: 20px;
     display: flex;
-    gap: 100px;
+    gap: 50px;
+
+    .contacts {
+      width: 300px;
+      div {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      input {
+        border-radius: 3px;
+        border: solid #202938;
+        background-color: #1a212d;
+        padding: 5px;
+      }
+    }
+
+    .aboutMe {
+      width: 200px;
+
+      .checkbox {
+        display: inline-block;
+      }
+      // select {
+      //   background-color: #1a212d;
+      //   border-radius: 4px;
+      //   height: 25px;
+      //   width: 50px;
+      // }
+
+      input,
+      textarea {
+        border-radius: 3px;
+        border: solid #202938;
+        background-color: #1a212d;
+        padding: 5px;
+      }
+
+      input {
+        width: 148px;
+      }
+
+      textarea {
+        width: 100%;
+        resize: vertical;
+      }
+    }
 
     .aboutMe,
     .contacts {
-      h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
-
-      b {
-        margin-right: 6px;
-      }
-
       display: flex;
       flex-flow: column;
       gap: 10px;
 
       line-height: 20px;
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      b ,label {
+        margin-right: 6px;
+        font-weight: 300;
+      }
+
+      span {
+        line-height: normal;
+        font-size: 14px;
+        font-weight: 500;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ const authState = {
 type AuthStateType = typeof authState
 
 const loggedUserState = {
-  id: null as number | null,
+  id: 0,
   email: '',
   login: '',
 }

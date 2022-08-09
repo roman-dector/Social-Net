@@ -1,6 +1,7 @@
 import { AppThunk } from '../../store'
 import * as actions from './actions'
 import { profileAPI } from '../../../dataAccess/api'
+import { profileTypes } from '.' 
 
 export const getUserProfileInfo =
   (userId: number): AppThunk<Promise<void>> =>
@@ -30,7 +31,18 @@ export const updateLoggedUserStatus =
   (newStatus: string): AppThunk<Promise<void>> =>
   async dispatch => {
     let response = await profileAPI.updateLoggedUserStatus(newStatus)
-    if (!response.data.resultCode)
+    if (!response.data.resultCode) {
       dispatch(actions.setUserStatus(newStatus))
       dispatch(actions.toggleIsFetchingProfileStatus(false))
+    }
+  }
+
+export const updateLoggedUserInfo =
+  (userId: number, userInfo: profileTypes.PersonalInfoType): AppThunk<Promise<void>> =>
+  async dispatch => {
+    let response = await profileAPI.updateLoggedUserInfo({...userInfo, userId})
+    if (!response.data.resultCode) {
+      dispatch(getUserProfileInfo(userId))
+      dispatch(actions.toggleIsFetchingProfileInfo(false))
+    }
   }
