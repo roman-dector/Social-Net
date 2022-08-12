@@ -1,5 +1,6 @@
 import { authTypes } from '../redux/ducks/auth'
 import { profileTypes } from '../redux/ducks/profile'
+import { usersTypes } from '../redux/ducks/users'
 
 export type ApiResponseType<DataType> = {
   data: DataType
@@ -37,4 +38,10 @@ export type CommonResponseDataType = {
 
 export type GetCaptchaUrlResponseDataType = {
   url: string
+}
+
+export type GetUsersResponseDataType = {
+  items: Array<usersTypes.UserItemType>
+  totalCount: number
+  error: string
 }

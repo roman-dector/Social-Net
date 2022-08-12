@@ -8,6 +8,7 @@ const selectUserProfileStatus = (state: RootState): string =>
 
 const selectIsFetchingProfileInfo = (state: RootState): boolean =>
   state.profileState.profileInfo.isFetchingProfileInfo
+
 const selectIsFetchingProfileStatus = (state: RootState): boolean =>
   state.profileState.profileInfo.isFetchingProfileStatus
 

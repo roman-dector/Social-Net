@@ -34,8 +34,6 @@ export type ContactsType = {
   mainLink: string
 }
 
-// export type ContactsType = {ContactTitleType: string}
-
 export type AboutMeType = {
   fullName: string
   lookingForAJob: boolean
@@ -53,6 +51,7 @@ export type PersonalInfoFormType = AboutMeType & ContactsType
 export type UserPersonalInfoType = PersonalInfoType & { userId: number }
 
 export type UserProfileInfoType = UserPersonalInfoType & { photos: PhotosType }
+
 
 export type SetUserProfileInfoActionType = {
   type: typeof SET_USER_PROFILE_INFO
@@ -78,3 +77,10 @@ export type ToggleIsFetchingProfileStatusActionType = {
   type: typeof TOGGLE_IS_FETCHING_PROFILE_STATUS
   isFetchingProfileStatus: boolean
 }
+
+export type CombinedProfileReducerActionType =
+  | SetUserProfileInfoActionType 
+  | SetUserStatusActionType
+  | SetUserPhotosActionType
+  | ToggleIsFetchingProfileInfoActionType
+  | ToggleIsFetchingProfileStatusActionType

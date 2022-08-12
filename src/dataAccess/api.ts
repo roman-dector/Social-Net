@@ -5,7 +5,10 @@ import { profileTypes } from '../redux/ducks/profile'
 
 const instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0',
-  headers: { 'API-KEY': process.env.REACT_APP_API_KEY || '5fd6286d-f0d9-4683-b3a9-4cdeb04d51f6' },
+  headers: {
+    'API-KEY':
+      process.env.REACT_APP_API_KEY || '5fd6286d-f0d9-4683-b3a9-4cdeb04d51f6',
+  },
   withCredentials: true,
 })
 
@@ -80,5 +83,23 @@ export const profileAPI = {
     let formData = new FormData()
     formData.append('image', image)
     return await instance.put('/profile/photo', formData)
+  },
+}
+
+export const usersAPI = {
+  async getUsers(
+    count = 10,
+    page = 1,
+    term = null,
+    friend = null
+  ): Promise<respTypes.ApiResponseType<respTypes.GetUsersResponseDataType>> {
+    return await instance.get('/users', {
+      params: {
+        count,
+        page,
+        term,
+        friend,
+      },
+    })
   },
 }

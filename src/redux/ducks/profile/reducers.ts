@@ -16,7 +16,7 @@ type ProfilePostsStateType = typeof profilePostsState
 
 const profileInfoReducer = (
   state: ProfileInfoStateType = profileInfoState,
-  action: any
+  action: types.CombinedProfileReducerActionType
 ): ProfileInfoStateType => {
   switch (action.type) {
     case types.SET_USER_PROFILE_INFO:
