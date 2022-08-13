@@ -13,3 +13,10 @@ export const setUsersItems = (
   type: types.SET_USERS_ITEMS,
   usersItems,
 })
+
+export const setTotalUsersCount = (
+  totalUsersCount: number
+): types.SetTotalUsersCountActionType => ({
+  type: types.SET_TOTAL_USERS_COUNT_TYPE,
+  totalUsersCount: totalUsersCount,
+})

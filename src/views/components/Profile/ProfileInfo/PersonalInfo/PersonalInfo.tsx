@@ -36,7 +36,6 @@ export const PersonalInfoContainer: FC<PersonalInfoType> = props => {
       ...props.contacts,
     }
   })
-  debugger
 
   return (
     <div className={styles.personalInfo}>
@@ -72,7 +71,6 @@ const EditInfoIcon: FC<EditInfoIconType> = props => {
   const isFetchingProfileInfo = useSelector(selectIsFetchingProfileInfo)
 
   const onSubmit: SubmitHandler<PersonalInfoFormType> = data => {
-    debugger
     props.reset({...data})
     dispatch(toggleIsFetchingProfileInfo(true))
     dispatch(

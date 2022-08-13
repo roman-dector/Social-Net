@@ -88,10 +88,10 @@ export const profileAPI = {
 
 export const usersAPI = {
   async getUsers(
-    count = 10,
-    page = 1,
-    term = null,
-    friend = null
+    count: number,
+    page: number,
+    term: string | null,
+    friend: boolean | null
   ): Promise<respTypes.ApiResponseType<respTypes.GetUsersResponseDataType>> {
     return await instance.get('/users', {
       params: {

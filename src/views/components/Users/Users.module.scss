@@ -1,6 +1,7 @@
-.user{
-    display: flex;
-    height: 200px;
-    justify-content: center;
-    align-items: center;
+.users {
+  padding: 25px;
+
+  .usersItems {
+    padding-top: 20px;
+  }
 }

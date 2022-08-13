@@ -1,0 +1,51 @@
+.pagination {
+  display: flex;
+  gap: 5px;
+
+  .buttons {
+    display: flex;
+    gap: 5px;
+
+    button {
+      min-width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: #37455C;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    .currentPage {
+      color: green;
+      background-color: aqua;
+    }
+
+  }
+
+  .move {
+    width: 20px;
+    height: 40px;
+    background-color: #37455C;
+    border-radius: 3px;
+
+    svg {
+    width: 20px;
+    height: 40px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .firstPoly {
+      fill: aqua;
+    }
+
+    .secondPoly {
+      fill: #37455C;
+    }
+  }
+  
+}
