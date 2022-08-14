@@ -1,13 +1,18 @@
 .users {
   padding: 25px;
 
-  .usersItems {
-    padding-top: 20px;
-  }
-
   .usersListControl {
     display: flex;
     justify-content: space-between;
     height: 40px;
+  }
+
+  .usersItems {
+    padding-top: 20px;
+  }
+
+  .usersPageBottom {
+    display: flex;
+    justify-content: center;
   }
 }

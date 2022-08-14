@@ -3,17 +3,17 @@ import styles from './UsersFilter.module.scss'
 import { FC, useState } from 'react'
 
 type UsersFilter = {
-  setFilterUsers: React.Dispatch<React.SetStateAction<undefined>>
+  setFilterUsers: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 export const UsersFilter: FC<UsersFilter> = props => {
   const [contentVisible, setContentVisible] = useState(false)
   const [selectedFilter, setSelectedFilter] = useState('all')
 
-  const onOptionClickHandler = (e: React.MouseEvent<HTMLOptionElement, MouseEvent>) => {
-    // @ts-ignore
+  const onOptionClickHandler = (
+    e: React.MouseEvent<HTMLOptionElement, MouseEvent>
+  ) => {
     props.setFilterUsers(e.currentTarget.value)
-    debugger
     setContentVisible(false)
     setSelectedFilter(e.currentTarget.innerText)
   }
@@ -42,22 +42,13 @@ export const UsersFilter: FC<UsersFilter> = props => {
 
       <div className={contentVisible ? undefined : styles.hidden}>
         <div className={styles.options}>
-          <option
-            value={''}
-            onClick={onOptionClickHandler}
-          >
+          <option value={''} onClick={onOptionClickHandler}>
             all
           </option>
-          <option
-            value={'true'}
-            onClick={onOptionClickHandler}
-          >
+          <option value={'true'} onClick={onOptionClickHandler}>
             followed
           </option>
-          <option
-            value={'false'}
-            onClick={onOptionClickHandler}
-          >
+          <option value={'false'} onClick={onOptionClickHandler}>
             not followed
           </option>
         </div>

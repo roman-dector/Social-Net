@@ -1,0 +1,23 @@
+.usersSearch {
+  display: flex;
+  input {
+    padding: 5px 8px 5px 8px;
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    background-color: #37455c44;
+    border: #37455c solid 3px;
+  }
+  .submitButton {
+    border: #37455c solid 3px;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #37455c44;
+    &:hover {
+      background-color: transparent;
+    }
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

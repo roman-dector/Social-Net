@@ -91,7 +91,7 @@ export const usersAPI = {
     count: number,
     page: number,
     term: string | undefined,
-    friend: boolean | undefined,
+    friend: string | undefined,
   ): Promise<respTypes.ApiResponseType<respTypes.GetUsersResponseDataType>> {
     return await instance.get('/users', {
       params: {
