@@ -1,0 +1,50 @@
+.usersOnPageSwitcher {
+  .showOptionsButton {
+    display: flex;
+    gap: 5px;
+    background-color: #37455c;
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: aqua;
+    }
+  }
+
+  .gap {
+    height: 5px;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .options {
+    flex-flow: column;
+    background-color: #37455c;
+    border-radius: 5px;
+    padding: 5px;
+
+    option {
+      display: flex;
+      justify-content: center;
+      padding: 2px;
+      width: 100%;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: rgb(52, 177, 177);
+      }
+    }
+  }
+}
