@@ -10,7 +10,7 @@ import { LoginDataType } from '../../../redux/ducks/auth/types'
 import {
   WrongCredentialsError,
   WrongCaptchaError,
-} from '../../../dataAccess/apiErrors'
+} from '../../../dal/apiErrors'
 import { AppThunk } from '../../../redux/store'
 
 const validationSchema = yup.object({

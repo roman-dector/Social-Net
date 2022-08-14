@@ -1,8 +1,8 @@
-import { authAPI, securityAPI } from '../../../dataAccess/api'
+import { authAPI, securityAPI } from '../../../dal/api'
 import {
   WrongCredentialsError,
   WrongCaptchaError,
-} from '../../../dataAccess/apiErrors'
+} from '../../../dal/apiErrors'
 import { AppThunk } from '../../store'
 
 import * as types from './types'

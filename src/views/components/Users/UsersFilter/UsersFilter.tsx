@@ -1,23 +1,26 @@
-import styles from './UsersOnPageSwitcher.module.scss'
+import styles from './UsersFilter.module.scss'
 
 import { FC, useState } from 'react'
 
-type UsersOnPagePropsType = {
-  numberOfUsersOnPage: number
-  setNumberOfUsersOnPage: React.Dispatch<React.SetStateAction<number>>
+type UsersFilter = {
+  setFilterUsers: React.Dispatch<React.SetStateAction<undefined>>
 }
 
-export const UsersOnPageSwitcher: FC<UsersOnPagePropsType> = props => {
+export const UsersFilter: FC<UsersFilter> = props => {
   const [contentVisible, setContentVisible] = useState(false)
+  const [selectedFilter, setSelectedFilter] = useState('all')
 
   const onOptionClickHandler = (e: React.MouseEvent<HTMLOptionElement, MouseEvent>) => {
-    props.setNumberOfUsersOnPage(Number(e.currentTarget.value))
+    // @ts-ignore
+    props.setFilterUsers(e.currentTarget.value)
+    debugger
     setContentVisible(false)
+    setSelectedFilter(e.currentTarget.innerText)
   }
 
   return (
     <div
-      className={styles.usersOnPageSwitcher}
+      className={styles.usersFilter}
       onMouseLeave={() => {
         setContentVisible(false)
       }}
@@ -28,7 +31,7 @@ export const UsersOnPageSwitcher: FC<UsersOnPagePropsType> = props => {
           setContentVisible(!contentVisible)
         }}
       >
-        <span>On page: {props.numberOfUsersOnPage}</span>
+        <span>Show: {selectedFilter}</span>
         <svg transform={contentVisible ? 'rotate(180)' : ''}>
           <rect x='10' y='1' width='8' height='3' transform='rotate(45)' />
           <rect x='-4' y='15' width='8' height='3' transform='rotate(-45)' />
@@ -40,22 +43,22 @@ export const UsersOnPageSwitcher: FC<UsersOnPagePropsType> = props => {
       <div className={contentVisible ? undefined : styles.hidden}>
         <div className={styles.options}>
           <option
-            value={10}
+            value={''}
             onClick={onOptionClickHandler}
           >
-            10
+            all
           </option>
           <option
-            value={50}
+            value={'true'}
             onClick={onOptionClickHandler}
           >
-            50
+            followed
           </option>
           <option
-            value={100}
+            value={'false'}
             onClick={onOptionClickHandler}
           >
-            100
+            not followed
           </option>
         </div>
       </div>

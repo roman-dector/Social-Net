@@ -16,7 +16,7 @@ import { LoginDataType } from '../../../redux/ducks/auth/types'
 import {
   WrongCredentialsError,
   WrongCaptchaError,
-} from '../../../dataAccess/apiErrors'
+} from '../../../dal/apiErrors'
 
 type MapStateToPopsType = {
   isUserAuthed: boolean

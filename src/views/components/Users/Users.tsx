@@ -1,6 +1,6 @@
 import styles from './Users.module.scss'
 
-import { Dispatch, FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { UserItemType } from '../../../redux/ducks/users/types'
@@ -13,37 +13,42 @@ import { toggleIsGettingUsersItems } from '../../../redux/ducks/users/actions'
 
 import { Pagination } from './Pagination/Pagination'
 import { UsersOnPageSwitcher } from './UsersOnPageSwitcher/UsersOnPageSwitcher'
+import { UsersFilter } from './UsersFilter/UsersFilter'
 
 const Users = () => {
   const dispatch = useDispatch()
+
   const usersItems = useSelector(selectUsersItems)
   const totalUsersCount = useSelector(selectTotalUsersCount)
 
   const [numberOfUsersOnPage, setNumberOfUsersOnPage] = useState(10)
   const [currentUsersPageNumber, setCurrentUsersPageNumber] = useState(1)
+  const [filterUsers, setFilterUsers] = useState(undefined)
 
   const amountOfUsersPages = Math.ceil(totalUsersCount / numberOfUsersOnPage)
 
-  const getUsersItems = (dispatch: Dispatch<any>) => {
+  const getUsersItems = () => {
+    debugger
     dispatch(toggleIsGettingUsersItems(true))
     dispatch(
       getUsers({
         count: numberOfUsersOnPage,
         page: currentUsersPageNumber,
+        friend: filterUsers,
       })
     )
   }
 
   useEffect(() => {
     if (currentUsersPageNumber === 1) {
-      getUsersItems(dispatch)
+      getUsersItems()
     } else {
       setCurrentUsersPageNumber(1)
     }
-  }, [numberOfUsersOnPage])
+  }, [numberOfUsersOnPage, filterUsers])
 
   useEffect(() => {
-    getUsersItems(dispatch)
+    getUsersItems()
   }, [currentUsersPageNumber])
 
   return (
@@ -58,6 +63,11 @@ const Users = () => {
           numberOfUsersOnPage={numberOfUsersOnPage}
           setNumberOfUsersOnPage={setNumberOfUsersOnPage}
         />
+
+        <UsersFilter
+          setFilterUsers={setFilterUsers}
+        />
+
         <SearchUsers />
       </div>
 
@@ -70,10 +80,6 @@ const Users = () => {
   )
 }
 
-const SearchUsers = () => {
-  return <div />
-}
-
 const UserPreviewCard: FC<UserItemType> = props => {
   return (
     <div className={styles.userPreviewCard}>
@@ -82,5 +88,14 @@ const UserPreviewCard: FC<UserItemType> = props => {
     </div>
   )
 }
+
+const SearchUsers = () => {
+  return (
+    <div>
+      <input type="text" />
+    </div>
+  )
+}
+
 
 export default Users

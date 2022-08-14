@@ -1,6 +1,6 @@
 import { AppThunk } from '../../store'
 import * as actions from './actions'
-import { profileAPI } from '../../../dataAccess/api'
+import { profileAPI } from '../../../dal/api'
 import { profileTypes } from '.' 
 
 export const getUserProfileInfo =

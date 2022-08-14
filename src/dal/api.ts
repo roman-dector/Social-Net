@@ -90,8 +90,8 @@ export const usersAPI = {
   async getUsers(
     count: number,
     page: number,
-    term: string | null,
-    friend: boolean | null
+    term: string | undefined,
+    friend: boolean | undefined,
   ): Promise<respTypes.ApiResponseType<respTypes.GetUsersResponseDataType>> {
     return await instance.get('/users', {
       params: {
