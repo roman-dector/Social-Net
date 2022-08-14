@@ -1,6 +1,6 @@
 import styles from './Pagination.module.scss'
 
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import {
   PaginationPropsType,
@@ -23,11 +23,18 @@ export const Pagination: FC<PaginationPropsType> = props => {
     }
   }
   const moveEnd = () => {
-    setBorders([props.amountOfUsersPages - PAGINATION_LENGTH, props.amountOfUsersPages])
+    setBorders([
+      props.amountOfUsersPages - PAGINATION_LENGTH,
+      props.amountOfUsersPages,
+    ])
   }
   const moveStart = () => {
     setBorders([0, PAGINATION_LENGTH])
   }
+
+  useEffect(() =>{
+    moveLeft()
+  },[props.amountOfUsersPages])
 
   return (
     <div className={styles.pagination}>
@@ -88,7 +95,9 @@ const MoveEnd: FC<{ onClickHandler: () => void }> = props => (
   </div>
 )
 
-const PaginationButtonsContainer: FC<PaginationButtonsContainerPropsType> = props => (
+const PaginationButtonsContainer: FC<
+  PaginationButtonsContainerPropsType
+> = props => (
   <div className={styles.buttons}>
     {Array.from(Array(props.amountOfUsersPages).keys())
       .slice(props.leftEnd, props.rightEnd)
