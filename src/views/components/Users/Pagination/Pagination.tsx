@@ -32,9 +32,9 @@ export const Pagination: FC<PaginationPropsType> = props => {
     setBorders([0, PAGINATION_LENGTH])
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     moveLeft()
-  },[props.amountOfUsersPages])
+  }, [props.amountOfUsersPages])
 
   return (
     <div className={styles.pagination}>
@@ -119,6 +119,7 @@ const PaginationButton: FC<PaginationButtonPropsType> = props => {
     <button
       onClick={() => {
         props.setCurrentUsersPageNumber(props.pageNumber)
+        window.scrollTo(0, 0)
       }}
       className={props.selected ? styles.currentPage : ''}
     >

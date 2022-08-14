@@ -8,6 +8,9 @@
   }
 
   .usersItems {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 30px;
     padding-top: 20px;
   }
 

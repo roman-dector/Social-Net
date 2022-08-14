@@ -3,7 +3,6 @@ import styles from './Users.module.scss'
 import { FC, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { UserItemType } from '../../../redux/ducks/users/types'
 import {
   selectUsersItems,
   selectTotalUsersCount,
@@ -15,8 +14,9 @@ import { Pagination } from './Pagination/Pagination'
 import { UsersOnPageSwitcher } from './UsersOnPageSwitcher/UsersOnPageSwitcher'
 import { UsersFilter } from './UsersFilter/UsersFilter'
 import { UsersSearch } from './UsersSearch/UsersSearch'
+import { UserPreviewCard } from './UserPreviewCard/UserPreviewCard'
 
-const Users = () => {
+const Users: FC<{}> = () => {
   const dispatch = useDispatch()
 
   const usersItems = useSelector(selectUsersItems)
@@ -79,15 +79,6 @@ const Users = () => {
           setCurrentUsersPageNumber={setCurrentUsersPageNumber}
         />
       </div>
-    </div>
-  )
-}
-
-const UserPreviewCard: FC<UserItemType> = props => {
-  return (
-    <div className={styles.userPreviewCard}>
-      <div>Name: {props.name}</div>
-      <div>Status: {props.status}</div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import styles from './SideBar.module.scss';
+import styles from './SideBar.module.scss'
 
-import PagesLinks from './PagesLinks/PagesLinks';
+import PagesLinks from './PagesLinks/PagesLinks'
 
 const SideBar = () => {
   return (
@@ -9,7 +9,7 @@ const SideBar = () => {
         <PagesLinks />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

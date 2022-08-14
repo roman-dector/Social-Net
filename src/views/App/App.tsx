@@ -20,7 +20,6 @@ import {
   Preloader,
 } from '../components/index'
 
-
 const App: FC = () => {
   const dispatch = useDispatch()
 
@@ -65,6 +64,5 @@ const App: FC = () => {
     </HashRouter>
   )
 }
-
 
 export default withStore(App)
