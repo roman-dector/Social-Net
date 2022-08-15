@@ -1,4 +1,7 @@
 .users {
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
   padding: 25px;
 
   .usersListControl {
@@ -7,11 +10,15 @@
     height: 40px;
   }
 
-  .usersItems {
+  .usersItemsContainer {
     display: flex;
-    flex-flow: row wrap;
-    gap: 30px;
-    padding-top: 20px;
+    justify-content: center;
+    .usersItems {
+      width: 890px;
+      display: flex;
+      flex-flow: row wrap;
+      gap: 30px;
+    }
   }
 
   .usersPageBottom {

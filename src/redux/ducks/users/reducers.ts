@@ -11,7 +11,7 @@ type UsersStateType = typeof usersState
 
 const usersItemsReducer = (
   state: UsersStateType = usersState,
-  action: types.CombinedUsersReducerActionType
+  action: types.CombinedUsersItemsReducerActionType
 ): UsersStateType => {
   switch (action.type) {
     case types.TOGGLE_IS_GETTING_USERS_ITEMS:
@@ -27,11 +27,46 @@ const usersItemsReducer = (
     case types.SET_TOTAL_USERS_COUNT_TYPE:
       return {
         ...state,
-        totalUsersCount: action.totalUsersCount
+        totalUsersCount: action.totalUsersCount,
+      }
+    case types.SET_USER_FOLLOWED:
+      return {
+        ...state,
+        usersItems: state.usersItems.map(userItem => {
+          if (userItem.id === action.followed.userId) {
+            userItem.followed = action.followed.isUserFollowed
+          }
+          return userItem
+        }),
       }
     default:
       return state
   }
 }
+
+// const usersFollowReducer = (
+//   state: UsersStateType = usersState,
+//   action: types.CombinedUsersFollowReducerActionType
+// ): UsersStateType => {
+//   switch (action.type) {
+//     case types.SET_USER_FOLLOWED:
+//       return {
+//         ...state,
+//         usersItems: state.usersItems.map(userItem => {
+//           if (userItem.id === action.followed.userId) {
+//             userItem.followed = action.followed.isUserFollowed
+//           }
+//           return userItem
+//         }),
+//       }
+//     default:
+//       return state
+//   }
+// }
+
+// export default combineReducers({
+//   usersItems: usersItemsReducer,
+//   usersFollow: usersFollowReducer,
+// })
 
 export default usersItemsReducer

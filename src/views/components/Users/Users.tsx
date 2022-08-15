@@ -25,7 +25,9 @@ const Users: FC<{}> = () => {
   const [currentUsersPageNumber, setCurrentUsersPageNumber] = useState(1)
   const [numberOfUsersOnPage, setNumberOfUsersOnPage] = useState(10)
   const [filterUsers, setFilterUsers] = useState<string | undefined>(undefined)
-  const [searchUsersTerm, setSearchUsersTerm] = useState<string | undefined>(undefined)
+  const [searchUsersTerm, setSearchUsersTerm] = useState<string | undefined>(
+    undefined
+  )
 
   const amountOfUsersPages = Math.ceil(totalUsersCount / numberOfUsersOnPage)
 
@@ -66,10 +68,12 @@ const Users: FC<{}> = () => {
         <UsersFilter setFilterUsers={setFilterUsers} />
       </div>
 
-      <div className={styles.usersItems}>
-        {usersItems.map((userItem, index) => (
-          <UserPreviewCard key={index} {...userItem} />
-        ))}
+      <div className={styles.usersItemsContainer}>
+        <div className={styles.usersItems}>
+          {usersItems.map((userItem, index) => (
+            <UserPreviewCard key={index} {...userItem} />
+          ))}
+        </div>
       </div>
 
       <div className={styles.usersPageBottom}>

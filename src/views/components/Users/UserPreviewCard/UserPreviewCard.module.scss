@@ -1,7 +1,33 @@
 .userPreviewCard {
+  background-color: #1B2436;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+
   img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 180px;
     object-fit: cover;
+
+    border-radius: 5px;
+  }
+
+  .followButton {
+    align-self: center;
+    width: 100%;
+    height: 25px;
+    background-color: #1b5b69;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #2898b1;
+    }
   }
 }

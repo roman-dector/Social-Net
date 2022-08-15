@@ -20,3 +20,21 @@ export const setTotalUsersCount = (
   type: types.SET_TOTAL_USERS_COUNT_TYPE,
   totalUsersCount: totalUsersCount,
 })
+
+export const setUserFollowed = (
+  userId: number,
+  isUserFollowed: boolean
+): types.SetUserFollowedActionType => ({
+  type: types.SET_USER_FOLLOWED,
+  followed: { userId, isUserFollowed },
+})
+
+export const followUser = (userId: number): types.FollowUserActionType => ({
+  type: types.FOLLOW_USER,
+  userId,
+})
+
+export const unfollowUser = (userId: number): types.UnfollowUserActionType => ({
+  type: types.UNFOLLOW_USER,
+  userId,
+})

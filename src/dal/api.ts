@@ -103,3 +103,23 @@ export const usersAPI = {
     })
   },
 }
+
+export const followAPI = {
+  async isUserFollowedByLoggedUser(
+    userId: number
+  ): Promise<respTypes.ApiResponseType<boolean>> {
+    return await instance.get(`/follow/${userId}`)
+  },
+
+  async followUser(
+    userId: number
+  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+    return await instance.post(`/follow/${userId}`)
+  },
+
+  async unfollowUser(
+    userId: number
+  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+    return await instance.delete(`/follow/${userId}`)
+  },
+}
