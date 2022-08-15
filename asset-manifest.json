@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/roman-dector/Social-Net/static/css/main.1fe3357a.css",
+    "main.js": "/roman-dector/Social-Net/static/js/main.0719f261.js",
+    "static/media/default_avatar.jpg": "/roman-dector/Social-Net/static/media/default_avatar.8439be62da3b716e771e.jpg",
+    "static/media/preloader.svg": "/roman-dector/Social-Net/static/media/preloader.320cbe06ef06184646c84523958a3636.svg",
+    "index.html": "/roman-dector/Social-Net/index.html",
+    "main.1fe3357a.css.map": "/roman-dector/Social-Net/static/css/main.1fe3357a.css.map",
+    "main.0719f261.js.map": "/roman-dector/Social-Net/static/js/main.0719f261.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1fe3357a.css",
+    "static/js/main.0719f261.js"
+  ]
+}
