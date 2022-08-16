@@ -6,9 +6,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   selectUsersItems,
   selectTotalUsersCount,
+  selectIsGettingUsersItems,
 } from '../../../redux/ducks/users/selectors'
 import { getUsers } from '../../../redux/ducks/users/operations'
+import { UsersItemsType } from '../../../redux/ducks/users/types'
 import { toggleIsGettingUsersItems } from '../../../redux/ducks/users/actions'
+
+import Preloader from '../common/Preloader'
 
 import { Pagination } from './Pagination/Pagination'
 import { UsersOnPageSwitcher } from './UsersOnPageSwitcher/UsersOnPageSwitcher'
@@ -21,6 +25,7 @@ const Users: FC<{}> = () => {
 
   const usersItems = useSelector(selectUsersItems)
   const totalUsersCount = useSelector(selectTotalUsersCount)
+  const isGettingUsersItems = useSelector(selectIsGettingUsersItems)
 
   const [currentUsersPageNumber, setCurrentUsersPageNumber] = useState(1)
   const [numberOfUsersOnPage, setNumberOfUsersOnPage] = useState(10)
@@ -68,13 +73,11 @@ const Users: FC<{}> = () => {
         <UsersFilter setFilterUsers={setFilterUsers} />
       </div>
 
-      <div className={styles.usersItemsContainer}>
-        <div className={styles.usersItems}>
-          {usersItems.map((userItem, index) => (
-            <UserPreviewCard key={index} {...userItem} />
-          ))}
-        </div>
-      </div>
+      {isGettingUsersItems ? (
+        <Preloader />
+      ) : (
+        <UsersItemsContainer usersItems={usersItems} />
+      )}
 
       <div className={styles.usersPageBottom}>
         <Pagination
@@ -86,5 +89,15 @@ const Users: FC<{}> = () => {
     </div>
   )
 }
+
+const UsersItemsContainer: FC<{ usersItems: UsersItemsType }> = props => (
+  <div className={styles.usersItemsContainer}>
+    <div className={styles.usersItems}>
+      {props.usersItems.map((userItem, index) => (
+        <UserPreviewCard key={index} {...userItem} />
+      ))}
+    </div>
+  </div>
+)
 
 export default Users

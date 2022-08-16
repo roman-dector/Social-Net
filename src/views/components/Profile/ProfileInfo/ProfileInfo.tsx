@@ -1,10 +1,8 @@
 import styles from './ProfileInfo.module.scss'
 
 import default_avatar from '../../../assets/default_avatar.jpg'
-import Preloader from '../../common/Preloader'
 import { ChangeEvent, ChangeEventHandler, FC, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import ReactTooltip from 'react-tooltip'
 
 import {
   updateLoggedUserPhoto,

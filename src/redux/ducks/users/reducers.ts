@@ -44,29 +44,4 @@ const usersItemsReducer = (
   }
 }
 
-// const usersFollowReducer = (
-//   state: UsersStateType = usersState,
-//   action: types.CombinedUsersFollowReducerActionType
-// ): UsersStateType => {
-//   switch (action.type) {
-//     case types.SET_USER_FOLLOWED:
-//       return {
-//         ...state,
-//         usersItems: state.usersItems.map(userItem => {
-//           if (userItem.id === action.followed.userId) {
-//             userItem.followed = action.followed.isUserFollowed
-//           }
-//           return userItem
-//         }),
-//       }
-//     default:
-//       return state
-//   }
-// }
-
-// export default combineReducers({
-//   usersItems: usersItemsReducer,
-//   usersFollow: usersFollowReducer,
-// })
-
 export default usersItemsReducer
