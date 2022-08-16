@@ -24,19 +24,13 @@ export const getUsers =
     }
   }
 
-// export const isUserFollowedByLoggedUser =
-//   (userId: number): AppThunk<Promise<void>> =>
-//   async dispatch => {
-//     let response = await followAPI.isUserFollowedByLoggedUser(userId)
-//     dispatch(actions.setUserFollowed(userId, response.data))
-//   }
-
 export const followUser =
 (userId: number): AppThunk<Promise<void>> =>
 async dispatch => {
   let response = await followAPI.followUser(userId)
   if (!response.data.resultCode) {
     dispatch(actions.setUserFollowed(userId, true))
+    dispatch(actions.setIsToggleFollowingInProgress(userId, false))
   }
 }
 
@@ -44,9 +38,8 @@ export const unfollowUser =
 (userId: number): AppThunk<Promise<void>> =>
 async dispatch => {
   let response = await followAPI.unfollowUser(userId)
-  debugger
   if (!response.data.resultCode) {
-    debugger
     dispatch(actions.setUserFollowed(userId, false))
+    dispatch(actions.setIsToggleFollowingInProgress(userId, false))
   }
 }

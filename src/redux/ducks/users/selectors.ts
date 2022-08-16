@@ -9,4 +9,3 @@ export const selectTotalUsersCount = (state: RootState) =>
 
 export const selectIsGettingUsersItems = (state: RootState) =>
   state.usersState.isGettingUsersItems
-

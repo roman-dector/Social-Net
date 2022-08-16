@@ -38,3 +38,11 @@ export const unfollowUser = (userId: number): types.UnfollowUserActionType => ({
   type: types.UNFOLLOW_USER,
   userId,
 })
+
+export const setIsToggleFollowingInProgress = (
+  userId: number,
+  isToggleFollowingInProgress: boolean
+): types.SetIsToggleFollowingInProgressActionType => ({
+  type: types.SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS,
+  payload: { userId, isToggleFollowingInProgress },
+})

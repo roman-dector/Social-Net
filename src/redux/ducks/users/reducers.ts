@@ -1,4 +1,3 @@
-import { combineReducers } from '@reduxjs/toolkit'
 import * as types from './types'
 
 const usersState = {
@@ -22,7 +21,10 @@ const usersItemsReducer = (
     case types.SET_USERS_ITEMS:
       return {
         ...state,
-        usersItems: action.usersItems,
+        usersItems: action.usersItems.map(i => ({
+          ...i,
+          isToggleFollowingInProgress: false,
+        })),
       }
     case types.SET_TOTAL_USERS_COUNT_TYPE:
       return {
@@ -34,7 +36,22 @@ const usersItemsReducer = (
         ...state,
         usersItems: state.usersItems.map(userItem => {
           if (userItem.id === action.followed.userId) {
-            userItem.followed = action.followed.isUserFollowed
+            return { ...userItem, followed: action.followed.isUserFollowed }
+          }
+          return userItem
+        }),
+      }
+    case types.SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS:
+      debugger
+      return {
+        ...state,
+        usersItems: state.usersItems.map(userItem => {
+          if (userItem.id === action.payload.userId) {
+            return {
+              ...userItem,
+              isToggleFollowingInProgress:
+                action.payload.isToggleFollowingInProgress,
+            }
           }
           return userItem
         }),

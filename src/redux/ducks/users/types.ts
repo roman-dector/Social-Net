@@ -8,6 +8,8 @@ export const SET_TOTAL_USERS_COUNT_TYPE =
 export const SET_USER_FOLLOWED = 'social-network/users/SET_IS_USER_FOLLOWED'
 export const FOLLOW_USER = 'social-network/users/FOLLOW_USER'
 export const UNFOLLOW_USER = 'social-network/users/UnfOLLOW_USER'
+export const SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS =
+  'social-network/users/SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS'
 
 export type UserItemType = {
   id: number
@@ -15,6 +17,7 @@ export type UserItemType = {
   status: string
   photos: profileTypes.PhotosType
   followed: boolean
+  isToggleFollowingInProgress: boolean
 }
 
 export type UsersItemsType = Array<UserItemType>
@@ -49,10 +52,10 @@ export type UnfollowUserActionType = {
   userId: number
 }
 
-// export type CombinedUsersFollowReducerActionType =
-//   | SetUserFollowedActionType
-//   | FollowUserActionType
-//   | UnfollowUserActionType
+export type SetIsToggleFollowingInProgressActionType = {
+  type: typeof SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS
+  payload: { userId: number; isToggleFollowingInProgress: boolean }
+}
 
 export type CombinedUsersItemsReducerActionType =
   | SetUsersItemsActionType
@@ -61,3 +64,4 @@ export type CombinedUsersItemsReducerActionType =
   | SetUserFollowedActionType
   | FollowUserActionType
   | UnfollowUserActionType
+  | SetIsToggleFollowingInProgressActionType
