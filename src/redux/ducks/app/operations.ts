@@ -16,5 +16,8 @@ export const setAppTheme = (): AppThunk => async dispatch => {
   let theme = await getAppThemeFromLS()
   if (theme !== null) {
     dispatch(actions.setAppTheme(theme))
+    document.documentElement.setAttribute('app-theme', theme)
+  } else {
+    document.documentElement.setAttribute('app-theme', 'dark')
   }
 }

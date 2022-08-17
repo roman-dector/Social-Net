@@ -1,5 +1,7 @@
-import { RootState } from "../../store";
+import { RootState } from '../../store'
 
-const getIsAppInitialized = (state: RootState): boolean => state.appState.isAppInitialized;
+export const getIsAppInitialized = (state: RootState): boolean =>
+  state.appState.isAppInitialized
 
-export { getIsAppInitialized };
+export const selectAppTheme = (state: RootState): 'dark' | 'light' =>
+  state.appState.appTheme

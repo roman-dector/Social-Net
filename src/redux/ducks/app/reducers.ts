@@ -1,11 +1,14 @@
 import * as types from './types'
 
-const initialState = {
+export type InitialStateType = {
+  isAppInitialized: boolean
+  appTheme: 'dark' | 'light'
+}
+
+const initialState: InitialStateType = {
   isAppInitialized: false,
   appTheme: 'dark',
 }
-
-type InitialStateType = typeof initialState
 
 const appReducer = (
   state: InitialStateType = initialState,
@@ -27,7 +30,5 @@ const appReducer = (
       return state
   }
 }
-
-export type { InitialStateType }
 
 export default appReducer
