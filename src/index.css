@@ -1,4 +1,4 @@
-// nullify styles
+/* nullify styles */
 * {
   padding: 0;
   margin: 0;
@@ -81,12 +81,7 @@ h6 {
   font-weight: 400;
 }
 
-// global styles
-
-* {
-  color: #d0d4fc;
-}
-
+/* global styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -94,10 +89,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #202938;
+
+}
 
   button {
     font-weight: bold;
     font-size: medium;
   }
+
+
+/* dark theme */
+* {
+  color: #d0d4fc;
 }
+
+html {
+  --app-background-color: #202938;
+  --contect-wrapper-background-color: #111828;
+}
+
+/* html[app-theme='dark'] {
+  --app-background-color: #202938;
+} */
+

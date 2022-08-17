@@ -35,30 +35,32 @@ const App: FC = () => {
 
   return (
     <HashRouter>
-      <div className={styles.app}>
-        <Header />
-        <SideBar />
+      <div className={styles.appContainer}>
+        <div className={styles.app}>
+          <Header />
+          <SideBar />
 
-        <div className={styles.contentWrapper}>
-          <Routes>
-            <Route path='/' element={<Navigate replace to='/profile' />} />
+          <div className={styles.contentWrapper}>
+            <Routes>
+              <Route path='/' element={<Navigate replace to='/profile' />} />
 
-            <Route path='/login' element={<Login />} />
+              <Route path='/login' element={<Login />} />
 
-            <Route path='/profile' element={<Profile />}>
-              <Route path=':userId' element={<Profile />} />
-            </Route>
+              <Route path='/profile' element={<Profile />}>
+                <Route path=':userId' element={<Profile />} />
+              </Route>
 
-            <Route path='/dialogs' element={<Dialogs />} />
+              <Route path='/dialogs' element={<Dialogs />} />
 
-            <Route path='/users' element={<Users />} />
+              <Route path='/users' element={<Users />} />
 
-            <Route path='/music' element={<Music />} />
+              <Route path='/music' element={<Music />} />
 
-            <Route path='/settings' element={<Settings />} />
+              <Route path='/settings' element={<Settings />} />
 
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </div>
         </div>
       </div>
     </HashRouter>

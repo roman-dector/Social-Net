@@ -1,7 +1,7 @@
 import {
   configureStore,
   combineReducers,
-  AnyAction,
+ AnyAction,
   ThunkAction,
 } from '@reduxjs/toolkit'
 
