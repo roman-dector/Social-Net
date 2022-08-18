@@ -22,7 +22,7 @@ export const UsersSearch: FC<UsersSearchPropsType> = props => {
           }
         }}
         onBlur={() => {
-          if (inputValue === '') {
+          if (inputValue in ['', undefined, null]) {
             props.setSearchUsersTerm(inputValue)
           }
         }}

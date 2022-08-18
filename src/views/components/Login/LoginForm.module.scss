@@ -22,7 +22,7 @@
   }
 
   input {
-    background-color: #ebedff;
+    background-color: var(--login-input-background-color);
     font-size: 16px;
   }
 
@@ -40,7 +40,8 @@
   .rememberMe {
     display: flex;
     align-items: center;
-    input, label {
+    input,
+    label {
       display: inline-block;
     }
   }
@@ -55,13 +56,13 @@
       background-color: #a7154a;
 
       &:hover {
-        background-color: #771036;
+        filter: brightness(70%);
       }
       &:disabled {
         background-color: #50494c;
       }
       &:active {
-        background-color: invert($color: #a7154a);
+        background-color: gray;
       }
     }
   }

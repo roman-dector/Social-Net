@@ -4,7 +4,7 @@
   .showOptionsButton {
     display: flex;
     justify-content: space-between;
-    background-color: #37455c;
+    background-color: var(--users-page-buttons-main-background-color);
     height: 100%;
     align-items: center;
     padding: 10px;
@@ -17,7 +17,7 @@
     svg {
       width: 20px;
       height: 20px;
-      fill: aqua;
+      fill: var(--main-accent-color);
     }
   }
 
@@ -33,7 +33,7 @@
 
   .options {
     flex-flow: column;
-    background-color: #37455c;
+    background-color: var(--users-page-buttons-main-background-color);
     border-radius: 5px;
     padding: 5px;
 
@@ -45,7 +45,7 @@
       border-radius: 3px;
 
       &:hover {
-        background-color: rgb(52, 177, 177);
+        background-color: var(--main-accent-color);
       }
     }
   }

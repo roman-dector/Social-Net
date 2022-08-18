@@ -10,16 +10,15 @@
       min-width: 40px;
       height: 40px;
       border-radius: 5px;
-      background-color: #37455C;
+      background-color: var(--users-page-buttons-main-background-color);
 
       &:hover {
-        opacity: 0.85;
+        opacity: 0.85
       }
     }
 
     .currentPage {
-      color: rgb(20, 41, 78);
-      background-color: #2898b1;
+      background-color: var(--main-accent-color);
     }
 
   }
@@ -27,7 +26,7 @@
   .move {
     width: 20px;
     height: 40px;
-    background-color: #37455C;
+    background-color: var(--users-page-buttons-main-background-color);
     border-radius: 3px;
 
     svg {
@@ -40,11 +39,11 @@
     }
 
     .firstPoly {
-      fill: aqua;
+      fill: var(--main-accent-color);
     }
 
     .secondPoly {
-      fill: #37455C;
+      fill: var(--users-page-buttons-main-background-color);
     }
   }
   

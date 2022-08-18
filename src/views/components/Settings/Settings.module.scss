@@ -8,7 +8,7 @@
   .settingsTablo {
     width: 500px;
     height: 500px;
-    background-color: #37455c;
+    background-color: var(--settings-points-frame-background-color);
     border-radius: 10px;
 
     display: flex;

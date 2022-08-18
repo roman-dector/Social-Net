@@ -7,7 +7,8 @@
   }
   .sideBarLink_active {
     text-decoration: none;
-    color: #32c0e1;
+    // color: #32c0e1;
+    color: var(--main-accent-color);
 
     &::before {
       content: '►';

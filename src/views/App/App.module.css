@@ -1,0 +1,24 @@
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--app-background-color);
+}
+
+.appContainer .app {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 50px auto;
+  gap: 15px;
+
+  grid-template-areas:
+    'h h'
+    's c';
+}
+
+.appContainer .app .contentWrapper {
+  grid-area: c;
+  border-radius: 10px;
+  background-color: var(--interface-background-color);
+}

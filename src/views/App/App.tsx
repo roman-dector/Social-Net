@@ -1,4 +1,4 @@
-import styles from './App.module.scss'
+import styles from './App.module.css'
 
 import { useEffect, FC } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
