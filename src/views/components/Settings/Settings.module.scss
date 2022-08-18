@@ -16,9 +16,18 @@
     flex-flow: column;
 
     .themeSwitcher {
-      background-color: blue;
-      width: 100px;
-      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 80%;
+      padding: 30px;
+
+      .buttonSwitcher {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
     }
   }
 }

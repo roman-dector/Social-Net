@@ -1,9 +1,11 @@
 import styles from './Settings.module.scss'
 
+import { IoMdSunny, IoMdMoon } from 'react-icons/io'
+
 import { useTheme } from '../../hooks/useTheme'
 
 export const ThemeSwitcher = () => {
-  const {theme, setTheme} = useTheme()
+  const { theme, setTheme } = useTheme()
   return (
     <div
       className={styles.themeSwitcher}
@@ -15,11 +17,20 @@ export const ThemeSwitcher = () => {
         }
       }}
     >
-      {
-        theme === 'dark'
-        ? 'Dark theme applied'
-        : 'Light theme applied'
-      }
+      <span>App theme</span>
+      <div className={styles.buttonSwitcher}>
+        {theme === 'dark' ? (
+          <>
+            <IoMdMoon size={25} />
+            <span>Dark</span>
+          </>
+        ) : (
+          <>
+            <IoMdSunny size={25} />
+            <span>Light</span>
+          </>
+        )}
+      </div>
     </div>
   )
 }

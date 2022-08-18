@@ -103,12 +103,12 @@ body {
   color: #d0d4fc;
 }
 
-html {
+html[app-theme='dark'] {
   --app-background-color: #202938;
   --contect-wrapper-background-color: #111828;
 }
 
-/* html[app-theme='dark'] {
-  --app-background-color: #202938;
-} */
-
+html[app-theme='light'] {
+  --app-background-color: blue;
+  --contect-wrapper-background-color: pink;
+}
