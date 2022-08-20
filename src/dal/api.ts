@@ -13,9 +13,7 @@ const instance = axios.create({
 })
 
 export const authAPI = {
-  async authMe(): Promise<
-    respTypes.ApiResponseType<respTypes.AuthMeResponseDataType>
-  > {
+  async authMe(): Promise<respTypes.AuthMeResponseType> {
     return await instance.get('/auth/me')
   },
 
@@ -24,9 +22,7 @@ export const authAPI = {
     password,
     rememberMe,
     captcha,
-  }: authTypes.LoginDataType): Promise<
-    respTypes.ApiResponseType<respTypes.LoginResponseDataType>
-  > {
+  }: authTypes.LoginDataType): Promise<respTypes.LoginResponseType> {
     return await instance.post('/auth/login', {
       email,
       password,
@@ -35,17 +31,13 @@ export const authAPI = {
     })
   },
 
-  async logout(): Promise<
-    respTypes.ApiResponseType<respTypes.CommonResponseDataType>
-  > {
+  async logout(): Promise<respTypes.CommonApiResponse<{}>> {
     return await instance.delete('/auth/login')
   },
 }
 
 export const securityAPI = {
-  async getCaptchaUrl(): Promise<
-    respTypes.ApiResponseType<respTypes.GetCaptchaUrlResponseDataType>
-  > {
+  async getCaptchaUrl(): Promise<respTypes.GetCaptchaUrlResponseType> {
     return await instance.get('/security/get-captcha-url')
   },
 }
@@ -53,7 +45,7 @@ export const securityAPI = {
 export const profileAPI = {
   async getUserProfileInfo(
     userId: number
-  ): Promise<respTypes.ApiResponseType<profileTypes.UserProfileInfoType>> {
+  ): Promise<respTypes.GetUserProfileInfoResponseType> {
     return await instance.get(`/profile/${userId}`)
   },
 
@@ -65,21 +57,19 @@ export const profileAPI = {
 
   async updateLoggedUserInfo(
     userInfo: profileTypes.UserPersonalInfoType
-  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+  ): Promise<respTypes.CommonApiResponse<{}>> {
     return await instance.put('/profile', userInfo)
   },
 
   async updateLoggedUserStatus(
     status: string
-  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+  ): Promise<respTypes.CommonApiResponse<{}>> {
     return await instance.put('/profile/status', { status })
   },
 
   async updateLoggedUserPhoto(
     image: File
-  ): Promise<
-    respTypes.ApiResponseType<respTypes.UpdataLoggedUserPhotoDataType>
-  > {
+  ): Promise<respTypes.UpdataLoggedUserPhotoResponseType> {
     let formData = new FormData()
     formData.append('image', image)
     return await instance.put('/profile/photo', formData)
@@ -91,8 +81,8 @@ export const usersAPI = {
     count: number,
     page: number,
     term: string | undefined,
-    friend: string | undefined,
-  ): Promise<respTypes.ApiResponseType<respTypes.GetUsersResponseDataType>> {
+    friend: string | undefined
+  ): Promise<respTypes.GetUsersResponseType> {
     return await instance.get('/users', {
       params: {
         count,
@@ -111,15 +101,41 @@ export const followAPI = {
     return await instance.get(`/follow/${userId}`)
   },
 
-  async followUser(
-    userId: number
-  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+  async followUser(userId: number): Promise<respTypes.CommonApiResponse<{}>> {
     return await instance.post(`/follow/${userId}`)
   },
 
-  async unfollowUser(
-    userId: number
-  ): Promise<respTypes.ApiResponseType<respTypes.CommonResponseDataType>> {
+  async unfollowUser(userId: number): Promise<respTypes.CommonApiResponse<{}>> {
     return await instance.delete(`/follow/${userId}`)
+  },
+}
+
+export const dialogsAPI = {
+  async getStartedDialogs(): Promise<respTypes.GetStartedDialogsResponseType> {
+    // return await instance.get(`/dialogs`)
+    return await instance.get(`dialogs/messages/new/count`)
+  },
+
+  async startDialogWithUser(
+    userId: number
+  ): Promise<respTypes.StartDialogResponseType> {
+    return await instance.put(`dialogs/${userId}`)
+  },
+
+  async getDialogMessages(
+    userId: number
+  ): Promise<respTypes.GetDialogMessagesResponseType> {
+    return await instance.get(`dialogs/${userId}/messages`)
+  },
+
+  async sendMessageToUser(
+    userId: number,
+    message: string
+  ): Promise<respTypes.ApiResponseType<boolean>> {
+    return await instance.post(`dialogs/${userId}/messages`, { message })
+  },
+
+  async getNewMessages(): Promise<respTypes.ApiResponseType<boolean>> {
+    return await instance.get(`dialogs/messages/new/count`)
   },
 }

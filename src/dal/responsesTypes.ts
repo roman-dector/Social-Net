@@ -2,6 +2,12 @@ import { authTypes } from '../redux/ducks/auth'
 import { profileTypes } from '../redux/ducks/profile'
 import { usersTypes } from '../redux/ducks/users'
 
+export type CommonResponseType<DataType> = {
+  resultCode: number
+  messages: string[]
+  data: DataType
+}
+
 export type ApiResponseType<DataType> = {
   data: DataType
   status: number
@@ -10,38 +16,55 @@ export type ApiResponseType<DataType> = {
   config: Object // for this fields
 }
 
-export type AuthMeResponseDataType = {
-  resultCode: number
-  messages: Array<string>
-  data: authTypes.LoggedUserInfoType
-}
+export type CommonApiResponse<DataType> = ApiResponseType<
+  CommonResponseType<DataType>
+>
 
-export type LoginResponseDataType = {
-  resultCode: number
-  messages: Array<string>
-  data: { userId: number }
-}
+export type AuthMeResponseType = CommonApiResponse<authTypes.LoggedUserInfoType>
 
-export type UpdataLoggedUserPhotoDataType = {
-  resultCode: number
-  messages: Array<string>
-  data: {
-    photos: profileTypes.PhotosType
-  }
-}
+export type LoginResponseType = CommonApiResponse<{ userId: number }>
 
-export type CommonResponseDataType = {
-  resultCode: number
-  messages: Array<string>
-  data: { userId: number }
-}
+export type LogoutResponseType = CommonApiResponse<{}>
 
-export type GetCaptchaUrlResponseDataType = {
-  url: string
-}
+export type GetCaptchaUrlResponseType = ApiResponseType<{ url: string }>
 
-export type GetUsersResponseDataType = {
-  items: Array<usersTypes.UserItemType>
+export type GetUserProfileInfoResponseType =
+  ApiResponseType<profileTypes.UserProfileInfoType>
+
+export type UpdataLoggedUserPhotoResponseType = CommonApiResponse<{
+  photos: profileTypes.PhotosType
+}>
+
+export type GetUsersResponseType = ApiResponseType<{
+  items: usersTypes.UserItemType[]
   totalCount: number
   error: string
+}>
+
+// dialogsAPI
+
+export type DialogType = {
+  hasNewMessages: boolean
+  id: number
+  lastDialogActivityDate: Date
+  lastUserActivityDate: Date
+  newMessagesCount: number
+  photos: profileTypes.PhotosType
+  userName: string
 }
+
+export type GetStartedDialogsResponseType = ApiResponseType<DialogType[]>
+
+export type StartDialogResponseType = ApiResponseType<{
+  data: Object
+  fieldsErrors: string[]
+  messages: string[]
+  resultCode: number
+}>
+
+export type GetDialogMessagesResponseType = ApiResponseType<{
+  error: string | null
+  items: string[]
+  totalCount: number
+}>
+
