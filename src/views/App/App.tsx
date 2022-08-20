@@ -18,6 +18,7 @@ import {
   Settings,
   NotFound,
   Preloader,
+  Chat,
 } from '../components/index'
 
 const App: FC = () => {
@@ -49,6 +50,8 @@ const App: FC = () => {
               <Route path='/profile' element={<Profile />}>
                 <Route path=':userId' element={<Profile />} />
               </Route>
+
+              <Route path='/chat' element={<Chat />} />
 
               <Route path='/dialogs' element={<Dialogs />} />
 
