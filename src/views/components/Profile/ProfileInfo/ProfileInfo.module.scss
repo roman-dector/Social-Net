@@ -18,10 +18,10 @@
 
     svg {
       width: 30px;
-      fill: #37455c;
+      fill: var(--input-border-color);
     }
     svg:hover {
-      fill: white;
+      fill: var(--main-accent-color);
     }
   }
 
@@ -69,6 +69,7 @@
             position: absolute;
             right: 1px;
             top: 3px;
+            fill: var(--main-accent-color);
           }
 
           display: inline-block;
