@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setAppThemeToLS } from '../../dal/localStorage'
+import { themeAPI } from '../../dal/localForage'
 import { selectAppTheme } from '../../redux/ducks/app/selectors'
 import { setAppTheme } from '../../redux/ducks/app/operations'
 
@@ -12,7 +12,7 @@ export const useTheme = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>(defaultTheme)
 
   useLayoutEffect(() => {
-    setAppThemeToLS(theme).then(() => {
+    themeAPI.setAppThemeToLF(theme).then(() => {
       dispatch(setAppTheme())
     })
   }, [theme])

@@ -42,7 +42,6 @@ const usersItemsReducer = (
         }),
       }
     case types.SET_IS_TOGGLE_FOLLOWING_IN_PROGRESS:
-      debugger
       return {
         ...state,
         usersItems: state.usersItems.map(userItem => {

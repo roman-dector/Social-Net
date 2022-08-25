@@ -11,14 +11,11 @@ export type ChatMessageType = {
 type SubscriberType = (messages: Array<ChatMessageType>) => void
 
 const closeHandler = (e: any) => {
-  debugger
   console.log('WS connection closed')
   console.log(e)
-  // setTimeout(createChannel, 5000)
 }
 
 const messageHandler = (e: MessageEvent) => {
-  debugger
   const data = JSON.parse(e.data)
   subscribers.forEach(s => s(data))
 }
@@ -58,7 +55,6 @@ export const chatAPI = {
   },
 
   subscribe: (callback: SubscriberType) => {
-    debugger
     subscribers.push(callback)
   },
 
@@ -67,7 +63,6 @@ export const chatAPI = {
   },
 
   sendMessage: (message: string) => {
-    debugger
     ws?.send(message)
   },
 }

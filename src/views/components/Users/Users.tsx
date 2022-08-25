@@ -12,7 +12,7 @@ import { getUsers } from '../../../redux/ducks/users/operations'
 import { UsersItemsType } from '../../../redux/ducks/users/types'
 import { toggleIsGettingUsersItems } from '../../../redux/ducks/users/actions'
 
-import Preloader from '../common/Preloader'
+import Preloader from '../common/Preloader/Preloader'
 
 import { Pagination } from './Pagination/Pagination'
 import { UsersOnPageSwitcher } from './UsersOnPageSwitcher/UsersOnPageSwitcher'

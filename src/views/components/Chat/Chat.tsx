@@ -17,12 +17,9 @@ const Chat = () => {
   const messages = useSelector(selectChatMessages)
 
   useEffect(() => {
-    debugger
     dispatch(startMessageListening())
-    debugger
 
     return () => {
-      debugger
       // dispatch(stopMessageListening())
     }
   }, [])

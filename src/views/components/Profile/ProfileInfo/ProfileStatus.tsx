@@ -1,6 +1,6 @@
 import styles from './ProfileInfo.module.scss'
 import { FC } from 'react'
-import Preloader from '../../common/Preloader'
+import Preloader from '../../common/Preloader/Preloader'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import ReactTooltip from 'react-tooltip'
 

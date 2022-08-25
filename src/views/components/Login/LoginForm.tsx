@@ -105,23 +105,25 @@ type FormErrorType = {
   message: string
 }
 
-const FieldErrorMessage = ({
+export const FieldErrorMessage = ({
   error,
   touched,
+  style
 }: {
   error?: FieldError
   touched?: boolean
+  style?: Object
 }) => {
   if (error && touched) {
     let errorMessage = error.message?.split(' ').splice(1).join(' ')
-    return <p className={styles.fieldError}>{errorMessage}</p>
+    return <p style={style ? style : {}} className={styles.fieldError}>{errorMessage}</p>
   } else return null
 }
 
-const FormErrorMessage = ({ error }: { error: FormErrorType }) => {
+export const FormErrorMessage = ({ error, style }: { error: FormErrorType, style?: Object }) => {
   return error.message ? (
     <div className={styles.formErrorContainer}>
-      <p className={styles.formError}>{error.message}</p>
+      <p style={style ? style : {}} className={styles.formError}>{error.message}</p>
     </div>
   ) : null
 }

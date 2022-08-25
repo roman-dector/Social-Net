@@ -1,6 +1,6 @@
 import styles from './Preloader.module.css';
 
-import preloader from '../../assets/preloader.svg';
+import preloader from '../../../assets/preloader.svg';
 
 
 const Preloader = ({width = 150}) => {

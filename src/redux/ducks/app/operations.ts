@@ -1,6 +1,6 @@
 import { AppThunk } from '../../store'
 import { authOperations } from '../auth'
-import { getAppThemeFromLS } from '../../../dal/localStorage'
+import { themeAPI } from '../../../dal/localForage'
 import * as actions from './actions'
 
 export const initializeApp =
@@ -13,7 +13,7 @@ export const initializeApp =
   }
 
 export const setAppTheme = (): AppThunk => async dispatch => {
-  let theme = await getAppThemeFromLS()
+  let theme = await themeAPI.getAppThemeFromLF()
   if (theme !== null) {
     dispatch(actions.setAppTheme(theme))
     document.documentElement.setAttribute('app-theme', theme)

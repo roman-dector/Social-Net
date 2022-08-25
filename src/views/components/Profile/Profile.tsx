@@ -15,7 +15,7 @@ import {
 } from '../../../redux/ducks/profile/actions'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
-import Preloader from '../common/Preloader'
+import Preloader from '../common/Preloader/Preloader'
 
 const Profile: FC<{}> = () => {
   const urlParams = useParams()

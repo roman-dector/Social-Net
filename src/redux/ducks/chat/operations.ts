@@ -21,18 +21,15 @@ const messageHandlerCreator = (
 export const startMessageListening =
   (): AppThunk<Promise<void>> => async dispatch => {
     console.log('start listen')
-    debugger
     chatAPI.start()
     chatAPI.subscribe(messageHandlerCreator(dispatch))
   }
 
 export const stopMessageListening =
   (): AppThunk<Promise<void>> => async dispatch => {
-    debugger
     chatAPI.unsubscribe(messageHandlerCreator(dispatch))
   }
 
 export const sendMessage = (message: string): AppThunk<Promise<void>> => async dispatch => {
-  debugger
   chatAPI.sendMessage(message)
 }
