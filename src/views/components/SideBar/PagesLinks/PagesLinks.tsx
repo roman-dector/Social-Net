@@ -4,8 +4,6 @@ const PagesLinks = () => {
   return (
     <ul>
       <SideBarLink to='/profile' name='Profile' />
-      <SideBarLink to='/dialogs' name='Dialogs' />
-      <SideBarLink to='/chat' name='Chat' />
       <SideBarLink to='/users' name='Users' />
       <SideBarLink to='/music' name='Music' />
       <SideBarLink to='/settings' name='Settings' />

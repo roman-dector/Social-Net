@@ -7,7 +7,3 @@ export { default as authState } from './auth'
 export { default as appState } from './app'
 
 export { default as musicState } from './music'
-
-export { default as chatState } from './chat'
-
-export { default as dialogsState } from './dialogs'
