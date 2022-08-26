@@ -31,7 +31,7 @@ export const musicAPI = {
   },
 
   getAudioFromLF: async () => {
-    return await localforage.getItem<{ name: string; audioFile: File }[]>(
+    return await localforage.getItem<{ name: string; audioFile: File; picture: File | null }[]>(
       'musicList'
     )
   },

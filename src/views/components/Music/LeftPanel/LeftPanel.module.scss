@@ -1,0 +1,112 @@
+.leftPanel {
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+
+  .musicList {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+
+    .songPreview {
+      width: 500px;
+      padding: 8px;
+      border-radius: 5px;
+      background-color: var(--input-background-color);
+      .songPic {
+        width: 40px;
+        height: 40px;
+      }
+      .songName {
+        margin-left: 15px;
+        font-size: smaller;
+      }
+    }
+  }
+  .addMusicButton {
+    width: 100px;
+    height: 20px;
+    background-color: purple;
+  }
+  .addMusicPopup {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .addMusicPopupForm {
+      height: 300px;
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+      flex-flow: column;
+      padding: 25px;
+      border-radius: 10px;
+      gap: 5px;
+      background-color: var(--app-background-color);
+
+      .nameContainer {
+        display: flex;
+        flex-flow: column;
+        gap: 5px;
+
+        input[type='text'] {
+          width: 100%;
+          display: block;
+          background-color: var(--input-background-color);
+          border: 2px solid var(--input-border-color);
+          height: 30px;
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
+      .filesDropzone {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          display: flex;
+          flex-flow: column;
+          gap: 3px;
+        }
+
+        .FileInput {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          width: 150px;
+          height: 100px;
+          background-color: var(--input-background-color);
+          border-radius: 5px;
+          line-height: 1.25;
+
+          &:hover {
+            border: solid var(--main-accent-color) 2px;
+          }
+
+          span {
+            word-break: break-all;
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 70px;
+          height: 30px;
+          background-color: var(--input-border-color);
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}

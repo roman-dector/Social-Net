@@ -22,4 +22,6 @@
   border-radius: 10px;
   background-color: var(--interface-background-color);
   min-height: 85vh;
+
+  padding: 25px;
 }
