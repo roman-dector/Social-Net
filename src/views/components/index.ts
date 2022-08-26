@@ -1,9 +1,12 @@
+import { lazy } from 'react'
+
 export { default as Header } from './Header/Header'
 export { default as SideBar } from './SideBar/SideBar'
-export { default as Login } from './Login/Login'
-export { default as Profile } from './Profile/Profile'
-export { default as Users } from './Users/Users'
-export { default as Music } from './Music/Music'
-export { default as Settings } from './Settings/Settings'
-export { default as NotFound } from './NotFound/NotFound'
 export { default as Preloader } from './common/Preloader/Preloader'
+
+export const Login = lazy(() => import('./Login/Login'))
+export const Profile = lazy(() => import('./Profile/Profile'))
+export const Users = lazy(() => import('./Users/Users'))
+export const Music = lazy(() => import('./Music/Music'))
+export const Settings = lazy(() => import('./Settings/Settings'))
+export const NotFound = lazy(() => import('./NotFound/NotFound'))
